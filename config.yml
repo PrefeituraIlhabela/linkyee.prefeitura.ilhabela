@@ -1,0 +1,220 @@
+# =============================================================================
+# linkyee — Site Configuration
+#
+# This file is rendered through Liquid: every {{ ... }} below is evaluated
+# at build time. Plugin output lives under `vars.<PluginName>` — see
+# `plugins/README.md` for the full plugin developer wiki.
+# =============================================================================
+
+# Theme — directory under ./themes/. Built-ins:
+#   default | minimal-mono | editorial-serif | neo-brutalism
+#   glassmorphism | terminal-retro | paper-card | newsprint
+theme: glassmorphism
+
+# HTML <html lang> attribute
+lang: "pt-br"
+
+# Force a color scheme regardless of the visitor's system appearance:
+#   auto  — follow OS (default; the page auto-switches between light/dark)
+#   light — always render light mode
+#   dark  — always render dark mode
+# Note: dark-first themes (e.g. terminal-retro) ignore "light" — their
+# whole identity is the dark palette.
+color_scheme: dark
+
+# -----------------------------------------------------------------------------
+# Plugins — every built-in plugin is shown below as a working example.
+# Remove the ones you don't need. Output is referenced as {{ vars.PluginName }}.
+# Full reference: plugins/README.md
+#
+# ⚠️ SECRETS — never put API keys / tokens in this file. config.yml is
+# committed to git and rendered into the publicly served site. If a plugin
+# needs auth (a personal access token, Steam Web API key, weather API
+# token, ...), set it as a GitHub Actions repository secret
+# (Settings → Secrets and variables → Actions → New repository secret),
+# expose it to the build via `env:` in `.github/workflows/build.yml`,
+# and read it from the plugin with ENV['MY_SECRET']. See plugins/README.md
+# for the canonical pattern.
+# -----------------------------------------------------------------------------
+plugins:
+  # Star counts for one or more GitHub repos.
+  # Use as: {{ vars.GithubRepoStarsCountPlugin['owner/repo'] }}
+  - GithubRepoStarsCountPlugin:
+      - ZhgChgLi/ZMarkupParser
+      - ZhgChgLi/ZReviewTender
+      - ZhgChgLi/ZMediumToMarkdown
+      - ZhgChgLi/linkyee
+
+  # Latest commit (sha / date / message) for a repo. Use as:
+  #   {{ vars.GithubLastCommitPlugin['owner/repo'].date }}
+  #   {{ vars.GithubLastCommitPlugin['owner/repo'].sha }}
+  - GithubLastCommitPlugin:
+      - antoniowf/linkyee
+
+  # Public profile stats (followers / following / public_repos). Use as:
+  #   {{ vars.GithubProfilePlugin['user'].followers }}
+  - GithubProfilePlugin:
+      - antoniowf
+
+  # Latest items from any RSS / Atom feed (Medium, blogs, YouTube channels,
+  # podcasts...). Returns an array of { title, url, date } per feed URL.
+  # Iterate inside theme index.html with {% for item in vars.RSSFeedPlugin[...] %}.
+  - RSSFeedPlugin:
+      - https://www.ilhabela.sp.gov.br/portal/rss
+
+  # Days until / since a target date. Hash-style — labels become keys.
+  # Use as: {{ vars.CountdownPlugin.label.days }}, .target, .passed
+  - CountdownPlugin:
+      linkyee_release: "2024-12-21"
+
+  # Latest video for one or more YouTube channels (channel id, @handle, or URL).
+  # Use as: {{ vars.YouTubeChannelLatestVideoPlugin['@handle'].title }}
+  #         {{ vars.YouTubeChannelLatestVideoPlugin['@handle'].url }}
+  - YouTubeChannelLatestVideoPlugin:
+      - "https://www.youtube.com/@PrefeituradeIlhabelaOficial"
+
+# -----------------------------------------------------------------------------
+# Tracking
+# -----------------------------------------------------------------------------
+google_analytics_id:
+
+# -----------------------------------------------------------------------------
+# Profile header
+# -----------------------------------------------------------------------------
+title: "Ilhabela"
+avatar: "./images/profile.jpeg"
+name: "Prefeitura de ilhabela"
+tagline: >-
+    Capital Nacional da Vela
+
+# -----------------------------------------------------------------------------
+# Links
+#   icon  — Font Awesome class (https://fontawesome.com/search?o=r&m=free)
+#   text  — displayed text (Liquid + HTML allowed)
+#   title — link title attribute
+#   url   — destination
+#   alt   — accessibility text
+#   target — `_blank` (new tab) or `_self`
+# -----------------------------------------------------------------------------
+  # → uses GithubRepoStarsCountPlugin
+##  - link:
+##      icon: "fa-brands fa-swift"
+##      text: "ZMarkupParser <span class='link-button-text'>({{vars.GithubRepoStarsCountPlugin['ZhgChgLi/ZMarkupParser']}} Stars)</span>"
+##      url: "https://github.com/ZhgChgLi/ZMarkupParser"
+##      alt: "ZMarkupParser is a pure-Swift library that helps you to convert HTML strings to NSAttributedString with customized style and tags."
+##      title: "ZMarkupParser is a pure-Swift library that helps you to convert HTML strings to NSAttributedString with customized style and tags."
+##      target: "_blank"
+##  - link:
+##      icon: "fa-brands fa-app-store-ios"
+##      text: "ZReviewTender <span class='link-button-text'>({{vars.GithubRepoStarsCountPlugin['ZhgChgLi/ZReviewTender']}} Stars)</span>"
+##      url: "https://github.com/ZhgChgLi/ZReviewTender"
+##      alt: "ZReviewTender is a tool for fetching app reviews from the App Store and Google Play Console and integrating them into your workflow."
+##      title: "ZReviewTender is a tool for fetching app reviews from the App Store and Google Play Console and integrating them into your workflow."
+##      target: "_blank"
+##  - link:
+##      icon: "fa-brands fa-markdown"
+##      text: "ZMediumToMarkdown <span class='link-button-text'>({{vars.GithubRepoStarsCountPlugin['ZhgChgLi/ZMediumToMarkdown']}} Stars)</span>"
+##      url: "https://github.com/ZhgChgLi/ZMediumToMarkdown"
+##      alt: "ZMediumToMarkdown is a powerful tool that allows you to effortlessly download and convert your Medium posts to Markdown format."
+##      title: "ZMediumToMarkdown is a powerful tool that allows you to effortlessly download and convert your Medium posts to Markdown format."
+links:
+  - link:
+      icon: "fa-solid fa-wifi"
+      text: "Conecte-se ao WiFi<span class='link-button-text'>Ilhabela Conectada</span>"
+      url: "http://neverssl.com"
+      alt: "Conecte-se ao WiFi"
+      title: "Wifi - Ilhabela Conectada"
+      target: "_blank"
+
+##      target: "_blank"
+
+  # → uses GithubRepoStarsCountPlugin + GithubLastCommitPlugin
+  - link:
+      icon: "fa-solid fa-cloud"
+      text: "Projeto - Ilhabela Conectada <span class='link-button-text'>Wifi para todos</span>"
+      url: "https://www.ilhabela.sp.gov.br/wifi#rede"
+      alt: "Projeto Ilhabela Conectada - Wifi para todos"
+      title: "Projeto Ilhabela Conectada - Wifi para todos"
+      target: "_blank"
+
+  - link:
+     icon: "fa-solid fa-globe"
+     text: "Website Prefeitura de Ilhabela<span class='link-button-text'></span>"
+     url: "https://www.ilhabela.sp.gov.br"
+     alt: "Website Prefeitura de Ilhabelas"
+     title: "Website Prefeitura de Ilhabela"
+     target: "_blank"
+
+  # → uses RSSFeedPlugin (latest blog post). `latest: true` opts into the
+  #   theme's "LATEST" badge styling.
+  - link:
+      icon: "fa-solid fa-newspaper"
+      text: "{{ vars.RSSFeedPlugin['https://www.ilhabela.sp.gov.br/portal/rss'][0].title }}"
+      url: "{{ vars.RSSFeedPlugin['https://www.ilhabela.sp.gov.br/portal/rss'][0].url }}"
+      alt: "Noticias Prefeitura de Ilhabela"
+      title: "RSS Prefeitura de Ilhabela"
+      target: "_blank"
+      latest: true
+
+  # → uses YouTubeChannelLatestVideoPlugin
+  - link:
+      icon: "fa-brands fa-youtube"
+      text: "{{ vars.YouTubeChannelLatestVideoPlugin['https://www.youtube.com/@PrefeituradeIlhabelaOficial'].title }}"
+      url: "{{ vars.YouTubeChannelLatestVideoPlugin['https://www.youtube.com/@PrefeituradeIlhabelaOficial'].url }}"
+      alt: "Latest YouTube video"
+      title: "Latest YouTube video"
+      target: "_blank"
+      latest: true
+
+# -----------------------------------------------------------------------------
+# Social media buttons
+# -----------------------------------------------------------------------------
+socials:
+##  - social:
+##      icon: "fa-brands fa-medium"
+##      url: "https://blog.zhgchg.li"
+##      title: "ZhgChgLi's Medium"
+##      alt: "ZhgChgLi's Medium"
+##      target: "_blank"
+  - social:
+      icon: "fa-brands fa-tiktok"
+      url: "https://www.tiktok.com/@prefeituradeilhabela"
+      title: "Prefeitura de Ilhabela TikTok"
+      alt: "Prefeitura de Ilhabela TikTok"
+      target: "_blank"
+  - social:
+      icon: "fa-brands fa-facebook"
+      url: "https://www.facebook.com/PrefeituraIlhabela"
+      title: "Facebook Prefeitura de Ilhabela"
+      alt: "Facebook Prefeitura de Ilhabela"
+      target: "_blank"
+  - social:
+      icon: "fa-brands fa-youtube"
+      url: "https://www.youtube.com/@PrefeituradeIlhabelaOficial"
+      title: "Prefeitura de Ilhabela YouTube"
+      alt: "Prefeitura de Ilhabela YouTube"
+      target: "_blank"
+  - social:
+      icon: "fa-brands fa-instagram"
+      url: "https://www.instagram.com/prefeituradeilhabelaoficial/"
+      title: "Instagram"
+      alt: "Instagram Prefeitura de Ilhabela"
+      target: "_blank"
+  - social:
+      icon: "fa-solid fa-envelope"
+      url: "mailto:protocolo@ilhabela.sp.gov.br"
+      title: "Email: protocolo@ilhabela.sp.gov.br"
+      alt: "protocolo@ilhabela.sp.gov.br"
+      target: "_blank"
+
+# -----------------------------------------------------------------------------
+# Footer (uses CountdownPlugin)
+# -----------------------------------------------------------------------------
+footer: >
+    R. Prefeito Mariano Procópio de Araújo Carvalho, 86 - Perequê<br>Ilhabela - SP, 11630-000
+    <br>Razão Social: Prefeitura Municipal de Ilhabela<br>CNPJ: 46.482.865/0001-32
+
+# Footer copyright message
+# Linkyee is a 100% free, open-source project—feel free to modify the copyright message as you like. :)
+copyright: >
+  © {{ year }} <a href="https://link.zhgchg.li" target="_blank">ZhgChgLi</a>. Powered by <a href="https://github.com/ZhgChgLi/linkyee" target="_blank">linkyee</a> Customized for <a href="https://www.ilhabela.sp.gov.br" target="_blank">Prefeitura de Ilhabela</a> by <a href="https://github.com/antoniowf" target="_blank">AntonioWF</a>.
