@@ -20,7 +20,7 @@ lang: "pt-br"
 #   dark  — always render dark mode
 # Note: dark-first themes (e.g. terminal-retro) ignore "light" — their
 # whole identity is the dark palette.
-color_scheme: dark
+color_scheme: auto
 
 # -----------------------------------------------------------------------------
 # Plugins — every built-in plugin is shown below as a working example.
@@ -40,10 +40,6 @@ plugins:
   # Star counts for one or more GitHub repos.
   # Use as: {{ vars.GithubRepoStarsCountPlugin['owner/repo'] }}
   - GithubRepoStarsCountPlugin:
-      - ZhgChgLi/ZMarkupParser
-      - ZhgChgLi/ZReviewTender
-      - ZhgChgLi/ZMediumToMarkdown
-      - ZhgChgLi/linkyee
 
   # Latest commit (sha / date / message) for a repo. Use as:
   #   {{ vars.GithubLastCommitPlugin['owner/repo'].date }}
@@ -83,7 +79,7 @@ google_analytics_id:
 # -----------------------------------------------------------------------------
 title: "Ilhabela"
 avatar: "./images/profile.jpeg"
-name: "Prefeitura de ilhabela"
+name: "Prefeitura de Ilhabela"
 tagline: >-
     Capital Nacional da Vela
 
@@ -96,39 +92,16 @@ tagline: >-
 #   alt   — accessibility text
 #   target — `_blank` (new tab) or `_self`
 # -----------------------------------------------------------------------------
-  # → uses GithubRepoStarsCountPlugin
-##  - link:
-##      icon: "fa-brands fa-swift"
-##      text: "ZMarkupParser <span class='link-button-text'>({{vars.GithubRepoStarsCountPlugin['ZhgChgLi/ZMarkupParser']}} Stars)</span>"
-##      url: "https://github.com/ZhgChgLi/ZMarkupParser"
-##      alt: "ZMarkupParser is a pure-Swift library that helps you to convert HTML strings to NSAttributedString with customized style and tags."
-##      title: "ZMarkupParser is a pure-Swift library that helps you to convert HTML strings to NSAttributedString with customized style and tags."
-##      target: "_blank"
-##  - link:
-##      icon: "fa-brands fa-app-store-ios"
-##      text: "ZReviewTender <span class='link-button-text'>({{vars.GithubRepoStarsCountPlugin['ZhgChgLi/ZReviewTender']}} Stars)</span>"
-##      url: "https://github.com/ZhgChgLi/ZReviewTender"
-##      alt: "ZReviewTender is a tool for fetching app reviews from the App Store and Google Play Console and integrating them into your workflow."
-##      title: "ZReviewTender is a tool for fetching app reviews from the App Store and Google Play Console and integrating them into your workflow."
-##      target: "_blank"
-##  - link:
-##      icon: "fa-brands fa-markdown"
-##      text: "ZMediumToMarkdown <span class='link-button-text'>({{vars.GithubRepoStarsCountPlugin['ZhgChgLi/ZMediumToMarkdown']}} Stars)</span>"
-##      url: "https://github.com/ZhgChgLi/ZMediumToMarkdown"
-##      alt: "ZMediumToMarkdown is a powerful tool that allows you to effortlessly download and convert your Medium posts to Markdown format."
-##      title: "ZMediumToMarkdown is a powerful tool that allows you to effortlessly download and convert your Medium posts to Markdown format."
+
 links:
   - link:
-      icon: "fa-solid fa-wifi"
-      text: "Conecte-se ao WiFi<span class='link-button-text'>Ilhabela Conectada</span>"
-      url: "http://neverssl.com"
-      alt: "Conecte-se ao WiFi"
-      title: "Wifi - Ilhabela Conectada"
-      target: "_blank"
+      icon: "fa-solid fa-wifi" # Icone 
+      text: "Conecte-se ao WiFi<span class='link-button-text'>Ilhabela Conectada</span>" # Texto do botão
+      url: "http://neverssl.com" # URL de destino   
+      alt: "Conecte-se ao WiFi" # Texto de acessibilidade
+      title: "Wifi - Ilhabela Conectada" # Título do link
+      target: "_blank" # Abre em uma nova aba
 
-##      target: "_blank"
-
-  # → uses GithubRepoStarsCountPlugin + GithubLastCommitPlugin
   - link:
       icon: "fa-solid fa-cloud"
       text: "Projeto - Ilhabela Conectada <span class='link-button-text'>Wifi para todos</span>"
@@ -149,33 +122,28 @@ links:
   #   theme's "LATEST" badge styling.
   - link:
       icon: "fa-solid fa-newspaper"
-      text: "{{ vars.RSSFeedPlugin['https://www.ilhabela.sp.gov.br/portal/rss'][0].title }}"
-      url: "{{ vars.RSSFeedPlugin['https://www.ilhabela.sp.gov.br/portal/rss'][0].url }}"
-      alt: "Noticias Prefeitura de Ilhabela"
-      title: "RSS Prefeitura de Ilhabela"
+      text: "{{ vars.RSSFeedPlugin['https://www.ilhabela.sp.gov.br/portal/rss'][0].title }}" # Título da última notícia
+      url: "{{ vars.RSSFeedPlugin['https://www.ilhabela.sp.gov.br/portal/rss'][0].url }}" # URL da última notícia
+      alt: "Noticias Prefeitura de Ilhabela" # Texto de acessibilidade
+      title: "RSS Prefeitura de Ilhabela"  # Título do link
       target: "_blank"
-      latest: true
+      latest: true # Marca como a última notícia 
 
   # → uses YouTubeChannelLatestVideoPlugin
   - link:
       icon: "fa-brands fa-youtube"
-      text: "{{ vars.YouTubeChannelLatestVideoPlugin['https://www.youtube.com/@PrefeituradeIlhabelaOficial'].title }}"
-      url: "{{ vars.YouTubeChannelLatestVideoPlugin['https://www.youtube.com/@PrefeituradeIlhabelaOficial'].url }}"
-      alt: "Latest YouTube video"
-      title: "Latest YouTube video"
+      text: "{{ vars.YouTubeChannelLatestVideoPlugin['https://www.youtube.com/@PrefeituradeIlhabelaOficial'].title }}" # Título do último vídeo
+      url: "{{ vars.YouTubeChannelLatestVideoPlugin['https://www.youtube.com/@PrefeituradeIlhabelaOficial'].url }}" # URL do último vídeo
+      alt: "Latest YouTube video" # Texto de acessibilidade
+      title: "Latest YouTube video" 
       target: "_blank"
-      latest: true
+      latest: true # Marca como o último vídeo
 
 # -----------------------------------------------------------------------------
 # Social media buttons
 # -----------------------------------------------------------------------------
 socials:
-##  - social:
-##      icon: "fa-brands fa-medium"
-##      url: "https://blog.zhgchg.li"
-##      title: "ZhgChgLi's Medium"
-##      alt: "ZhgChgLi's Medium"
-##      target: "_blank"
+
   - social:
       icon: "fa-brands fa-tiktok"
       url: "https://www.tiktok.com/@prefeituradeilhabela"
@@ -208,13 +176,10 @@ socials:
       target: "_blank"
 
 # -----------------------------------------------------------------------------
-# Footer (uses CountdownPlugin)
+# Footer 
 # -----------------------------------------------------------------------------
 footer: >
-    R. Prefeito Mariano Procópio de Araújo Carvalho, 86 - Perequê<br>Ilhabela - SP, 11630-000
-    <br>Razão Social: Prefeitura Municipal de Ilhabela<br>CNPJ: 46.482.865/0001-32
+    Prefeitura Municipal de Ilhabela
 
-# Footer copyright message
-# Linkyee is a 100% free, open-source project—feel free to modify the copyright message as you like. :)
 copyright: >
-  © {{ year }} <a href="https://link.zhgchg.li" target="_blank">ZhgChgLi</a>. Powered by <a href="https://github.com/ZhgChgLi/linkyee" target="_blank">linkyee</a> Customized for <a href="https://www.ilhabela.sp.gov.br" target="_blank">Prefeitura de Ilhabela</a> by <a href="https://github.com/antoniowf" target="_blank">AntonioWF</a>.
+  © {{ year }} Powered by <a href="https://github.com/ZhgChgLi/linkyee" target="_blank">linkyee</a> Customized for <a href="https://www.ilhabela.sp.gov.br" target="_blank">Prefeitura de Ilhabela</a> by <a href="https://github.com/antoniowf" target="_blank">AntonioWF</a>.
