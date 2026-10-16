@@ -118,11 +118,27 @@ arquivo é YAML e também aceita expressões Liquid, avaliadas durante o build.
 ```yaml
 theme: glassmorphism
 lang: "pt-br"
+i18n:
+  default_locale: pt-br
+  locales:
+    pt-br: locales/pt-br.yml
+    en: locales/en.yml
+    es: locales/es.yml
+    fr: locales/fr.yml
 color_scheme: auto
 ```
 
 - `theme` deve corresponder ao nome de uma pasta em [`themes/`](./themes/).
 - `lang` define o idioma do atributo HTML `lang`.
+- `i18n.locales` define as versões disponíveis e aponta para seus catálogos
+  YAML. O build gera uma pasta para cada idioma (`/pt-br/`, `/en/`, `/es/` e
+  `/fr/`) e uma página raiz de seleção.
+- A página raiz identifica o idioma preferido pelo navegador usando
+  `navigator.languages`/`navigator.language`, redireciona para a versão
+  correspondente e usa `pt-br` como fallback. A escolha manual no seletor é
+  guardada em `localStorage` para as próximas visitas.
+- Cada catálogo pode substituir textos do perfil, links, rodapé e os textos de
+  interface em `ui`. Os arquivos oficiais ficam em [`locales/`](./locales/).
 - `color_scheme` pode ser `auto`, `light` ou `dark`. Em `auto`, o tema
   acompanha a preferência do sistema do visitante.
 

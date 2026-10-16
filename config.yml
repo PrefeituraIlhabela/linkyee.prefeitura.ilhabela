@@ -14,6 +14,16 @@ theme: glassmorphism
 # HTML <html lang> attribute
 lang: "pt-br"
 
+# The site is rendered once per locale. The root page uses JavaScript to
+# select the best version from the browser language and remembers the choice.
+i18n:
+  default_locale: pt-br
+  locales:
+    pt-br: locales/pt-br.yml
+    en: locales/en.yml
+    es: locales/es.yml
+    fr: locales/fr.yml
+
 # Force a color scheme regardless of the visitor's system appearance:
 #   auto  — follow OS (default; the page auto-switches between light/dark)
 #   light — always render light mode

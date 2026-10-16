@@ -1,0 +1,66 @@
+lang: fr
+og_locale: fr_FR
+locale_label: Français
+
+title: Ilhabela
+name: Mairie d'Ilhabela
+tagline: Capitale nationale de la voile
+
+links:
+  - link:
+      icon: "fa-solid fa-wifi"
+      text: "Se connecter au WiFi<span class='link-button-text'>Ilhabela Connectée</span>"
+      url: "http://neverssl.com"
+      alt: "Se connecter au WiFi"
+      title: "WiFi - Ilhabela Connectée"
+      target: "_blank"
+  - link:
+      icon: "fa-solid fa-cloud"
+      text: "Projet Ilhabela Connectée <span class='link-button-text'>WiFi pour tous</span>"
+      url: "https://www.ilhabela.sp.gov.br/wifi#rede"
+      alt: "Projet Ilhabela Connectée - WiFi pour tous"
+      title: "Projet Ilhabela Connectée - WiFi pour tous"
+      target: "_blank"
+  - link:
+      icon: "fa-solid fa-globe"
+      text: "Site web de la mairie d'Ilhabela"
+      url: "https://www.ilhabela.sp.gov.br"
+      alt: "Site web de la mairie d'Ilhabela"
+      title: "Site web de la mairie d'Ilhabela"
+      target: "_blank"
+  - link:
+      icon: "fa-solid fa-newspaper"
+      text: "{{ vars.RSSFeedPlugin['https://www.ilhabela.sp.gov.br/portal/rss'][0].title }}"
+      url: "{{ vars.RSSFeedPlugin['https://www.ilhabela.sp.gov.br/portal/rss'][0].url }}"
+      alt: "Actualités de la mairie d'Ilhabela"
+      title: "RSS de la mairie d'Ilhabela"
+      target: "_blank"
+      latest: true
+
+socials:
+  - social: { icon: "fa-brands fa-tiktok", url: "https://www.tiktok.com/@prefeituradeilhabela", title: "TikTok de la mairie d'Ilhabela", alt: "TikTok de la mairie d'Ilhabela", target: "_blank" }
+  - social: { icon: "fa-brands fa-facebook", url: "https://www.facebook.com/PrefeituraIlhabela", title: "Facebook de la mairie d'Ilhabela", alt: "Facebook de la mairie d'Ilhabela", target: "_blank" }
+  - social: { icon: "fa-brands fa-youtube", url: "https://www.youtube.com/@PrefeituradeIlhabelaOficial", title: "YouTube de la mairie d'Ilhabela", alt: "YouTube de la mairie d'Ilhabela", target: "_blank" }
+  - social: { icon: "fa-brands fa-instagram", url: "https://www.instagram.com/prefeituradeilhabelaoficial/", title: "Instagram de la mairie d'Ilhabela", alt: "Instagram de la mairie d'Ilhabela", target: "_blank" }
+  - social: { icon: "fa-solid fa-envelope", url: "mailto:protocolo@ilhabela.sp.gov.br", title: "E-mail : protocolo@ilhabela.sp.gov.br", alt: "protocolo@ilhabela.sp.gov.br", target: "_blank" }
+
+footer: Mairie municipale d'Ilhabela
+copyright: "© {{ year }} Propulsé par <a href='https://github.com/ZhgChgLi/linkyee' target='_blank'>linkyee</a>. Personnalisé pour la <a href='https://www.ilhabela.sp.gov.br' target='_blank'>mairie d'Ilhabela</a> par <a href='https://github.com/antoniowf' target='_blank'>AntonioWF</a> 🖤."
+
+ui:
+  language_switcher: Langue
+  profile_picture: Photo de profil
+  primary_links: Liens principaux
+  latest: NOUVEAU
+  new: NOUVEAU
+  terminal_latest: "[NOUVEAU]"
+  selected_works: Travaux et chaînes sélectionnés
+  elsewhere: Ailleurs
+  personal_edition: L'édition personnelle
+  terminal_links: "$ ls ./liens/"
+  terminal_socials: "$ cat ./réseaux-sociaux"
+  terminal_footer: "$ tail -n 1 ./pied-de-page"
+  newsprint_volume: "VOL. {{ year }} · LIENS"
+  newsprint_links: "01 / Liens"
+  newsprint_connect: "02 / Contact"
+  entries: ENTRÉES

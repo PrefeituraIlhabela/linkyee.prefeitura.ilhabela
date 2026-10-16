@@ -1,0 +1,66 @@
+lang: en
+og_locale: en_US
+locale_label: English
+
+title: Ilhabela
+name: Ilhabela City Hall
+tagline: National Sailing Capital
+
+links:
+  - link:
+      icon: "fa-solid fa-wifi"
+      text: "Connect to WiFi<span class='link-button-text'>Connected Ilhabela</span>"
+      url: "http://neverssl.com"
+      alt: "Connect to WiFi"
+      title: "WiFi - Connected Ilhabela"
+      target: "_blank"
+  - link:
+      icon: "fa-solid fa-cloud"
+      text: "Connected Ilhabela Project <span class='link-button-text'>WiFi for everyone</span>"
+      url: "https://www.ilhabela.sp.gov.br/wifi#rede"
+      alt: "Connected Ilhabela Project - WiFi for everyone"
+      title: "Connected Ilhabela Project - WiFi for everyone"
+      target: "_blank"
+  - link:
+      icon: "fa-solid fa-globe"
+      text: "Ilhabela City Hall Website"
+      url: "https://www.ilhabela.sp.gov.br"
+      alt: "Ilhabela City Hall Website"
+      title: "Ilhabela City Hall Website"
+      target: "_blank"
+  - link:
+      icon: "fa-solid fa-newspaper"
+      text: "{{ vars.RSSFeedPlugin['https://www.ilhabela.sp.gov.br/portal/rss'][0].title }}"
+      url: "{{ vars.RSSFeedPlugin['https://www.ilhabela.sp.gov.br/portal/rss'][0].url }}"
+      alt: "Ilhabela City Hall news"
+      title: "Ilhabela City Hall RSS"
+      target: "_blank"
+      latest: true
+
+socials:
+  - social: { icon: "fa-brands fa-tiktok", url: "https://www.tiktok.com/@prefeituradeilhabela", title: "Ilhabela City Hall TikTok", alt: "Ilhabela City Hall TikTok", target: "_blank" }
+  - social: { icon: "fa-brands fa-facebook", url: "https://www.facebook.com/PrefeituraIlhabela", title: "Ilhabela City Hall Facebook", alt: "Ilhabela City Hall Facebook", target: "_blank" }
+  - social: { icon: "fa-brands fa-youtube", url: "https://www.youtube.com/@PrefeituradeIlhabelaOficial", title: "Ilhabela City Hall YouTube", alt: "Ilhabela City Hall YouTube", target: "_blank" }
+  - social: { icon: "fa-brands fa-instagram", url: "https://www.instagram.com/prefeituradeilhabelaoficial/", title: "Ilhabela City Hall Instagram", alt: "Ilhabela City Hall Instagram", target: "_blank" }
+  - social: { icon: "fa-solid fa-envelope", url: "mailto:protocolo@ilhabela.sp.gov.br", title: "Email: protocolo@ilhabela.sp.gov.br", alt: "protocolo@ilhabela.sp.gov.br", target: "_blank" }
+
+footer: Ilhabela City Hall
+copyright: "© {{ year }} Powered by <a href='https://github.com/ZhgChgLi/linkyee' target='_blank'>linkyee</a>. Customized for <a href='https://www.ilhabela.sp.gov.br' target='_blank'>Ilhabela City Hall</a> by <a href='https://github.com/antoniowf' target='_blank'>AntonioWF</a> 🖤."
+
+ui:
+  language_switcher: Language
+  profile_picture: Profile picture
+  primary_links: Primary links
+  latest: LATEST
+  new: NEW
+  terminal_latest: "[NEW]"
+  selected_works: Selected works and channels
+  elsewhere: Elsewhere
+  personal_edition: The personal edition
+  terminal_links: "$ ls ./links/"
+  terminal_socials: "$ cat ./socials"
+  terminal_footer: "$ tail -n 1 ./footer"
+  newsprint_volume: "VOL. {{ year }} · LINKS"
+  newsprint_links: "01 / Links"
+  newsprint_connect: "02 / Connect"
+  entries: ENTRIES
