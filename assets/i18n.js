@@ -1,5 +1,4 @@
 (() => {
-  const storageKey = "linkyee.locale";
   const root = document.documentElement;
   const locales = (() => {
     try {
@@ -11,23 +10,6 @@
 
   const normalize = (locale) => locale.replace(/_/g, "-").toLowerCase();
   const normalizedLocales = new Map(locales.map((locale) => [normalize(locale), locale]));
-
-  const saveLocale = (locale) => {
-    try {
-      localStorage.setItem(storageKey, locale);
-    } catch {
-      // Storage can be unavailable in private or restricted contexts.
-    }
-  };
-
-  const savedLocale = () => {
-    try {
-      const locale = localStorage.getItem(storageKey);
-      return locales.includes(locale) ? locale : null;
-    } catch {
-      return null;
-    }
-  };
 
   const browserLocale = () => {
     const preferred = navigator.languages || [navigator.language || ""];
@@ -49,13 +31,8 @@
 
   if (root.dataset.localeRoot === "true") {
     const basePath = window.location.pathname.replace(/\/(?:index\.html)?$/, "") || "/";
-    const targetLocale = savedLocale() || browserLocale();
+    const targetLocale = browserLocale();
     const target = `${basePath.replace(/\/?$/, "/")}${encodeURIComponent(targetLocale)}${window.location.search}${window.location.hash}`;
     window.location.replace(target);
-    return;
   }
-
-  document.querySelectorAll("[data-locale]").forEach((link) => {
-    link.addEventListener("click", () => saveLocale(link.dataset.locale));
-  });
 })();

@@ -133,10 +133,9 @@ color_scheme: auto
 - `i18n.locales` define as versões disponíveis e aponta para seus catálogos
   YAML. O build gera uma pasta para cada idioma (`/pt-br/`, `/en/`, `/es/` e
   `/fr/`) e uma página raiz de seleção.
-- A página raiz identifica o idioma preferido pelo navegador usando
-  `navigator.languages`/`navigator.language`, redireciona para a versão
-  correspondente e usa `pt-br` como fallback. A escolha manual no seletor é
-  guardada em `localStorage` para as próximas visitas.
+- A página raiz identifica automaticamente o idioma preferido pelo navegador
+  usando `navigator.languages`/`navigator.language`, redireciona para a versão
+  correspondente e usa `pt-br` como fallback. Não há seleção manual de idioma.
 - Cada catálogo pode substituir textos do perfil, links, rodapé e os textos de
   interface em `ui`. Os arquivos oficiais ficam em [`locales/`](./locales/).
 - `color_scheme` pode ser `auto`, `light` ou `dark`. Em `auto`, o tema

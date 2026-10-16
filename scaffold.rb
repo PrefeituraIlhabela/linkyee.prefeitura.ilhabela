@@ -82,9 +82,8 @@ def copy_theme_assets(source_dir, destination_dir)
   FileUtils.rm_f(File.join(destination_dir, "index.html"))
 end
 
-def copy_shared_assets(destination_dir, include_css: true)
+def copy_shared_assets(destination_dir)
   FileUtils.cp(File.join(SHARED_ASSETS_DIR, "i18n.js"), destination_dir)
-  FileUtils.cp(File.join(SHARED_ASSETS_DIR, "i18n.css"), destination_dir) if include_css
 end
 
 def render_site(source_dir, destination_dir, context)
@@ -99,7 +98,7 @@ def render_site(source_dir, destination_dir, context)
 end
 
 def render_redirector(destination_dir, context)
-  copy_shared_assets(destination_dir, include_css: false)
+  copy_shared_assets(destination_dir)
   default_option = context.fetch("language_options").find { |option| option["code"] == context["default_locale"] }
   locale_codes = CGI.escapeHTML(context.fetch("language_options").map { |option| option["code"] }.to_json)
   title = CGI.escapeHTML(context["title"].to_s)

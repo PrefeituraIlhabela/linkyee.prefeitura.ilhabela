@@ -40,17 +40,9 @@
     {% for option in language_options %}
       <link rel="alternate" hreflang="{{ option.code }}" href="../{{ option.code }}/" />
     {% endfor %}
-    <link rel="stylesheet" href="./i18n.css?v={{ last_modified_at }}" />
   {% endif %}
 </head>
 <body>
-  {% if i18n_enabled %}
-    <nav class="language-switcher" aria-label="{{ ui.language_switcher | default: 'Language' }}">
-      {% for option in language_options %}
-        <a href="../{{ option.code }}/" data-locale="{{ option.code }}"{% if option.code == locale %} aria-current="page"{% endif %}>{{ option.label }}</a>
-      {% endfor %}
-    </nav>
-  {% endif %}
   <main class="page">
     <header class="masthead">
       <div class="masthead-meta mono">

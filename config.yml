@@ -15,7 +15,7 @@ theme: glassmorphism
 lang: "pt-br"
 
 # The site is rendered once per locale. The root page uses JavaScript to
-# select the best version from the browser language and remembers the choice.
+# select the best version from the browser language automatically.
 i18n:
   default_locale: pt-br
   locales:
