@@ -1,387 +1,409 @@
-<!-- markdownlint-disable-next-line -->
-English | [繁體中文](./README.zh-TW.md)
+<div style="display: flex; justify-content: center; align-items: center; flex-direction: column; text-align: center; margin-bottom: 1rem;">
+  <img src="./themes/glassmorphism/images/profile.png" alt="Prefeitura de Ilhabela" width="120" height="120" style="border-radius: 50%; margin-bottom: 1rem;">
 
-<!-- markdownlint-disable-next-line -->
-<div align="center">
+<h1> Linkyee Prefeitura de Ilhabela</h1>
 
-  <!-- markdownlint-disable-next-line -->
-  # linkyee — Your Own Link Page
 
-  A fully customized, **100% free**, open-source LinkTree alternative — deployed straight to GitHub Pages.
+---
+  <div alt= "stacks">
+    <img src="https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5">
+    <img src="https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E" alt="JavaScript">
+    <img src="https://img.shields.io/badge/ruby-%23CC342D.svg?style=for-the-badge&logo=ruby&logoColor=white" alt="Ruby">
+    <img src="https://img.shields.io/badge/Shell_script-%23121011.svg?style=for-the-badge&logo=gnu-bash&logoColor=white" alt="Shell Script">
+    <img src="https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=gnu-bash&logoColor=white" alt="Docker">
+    <img src="https://img.shields.io/badge/yaml-%23ffffff.svg?style=for-the-badge&logo=yaml&logoColor=151515" alt="YAML">
+  </div>
 
-  Inspired by Jekyllrb and LinkTree.
-
-  [![Automatic build](../../actions/workflows/build.yml/badge.svg)](../../actions/workflows/build.yml) [![pages-build-deployment](../../actions/workflows/pages/pages-build-deployment/badge.svg)](../../actions/workflows/pages/pages-build-deployment)
-
-  [**Live Demo →**](https://zhgchg.li/linkyee/)
-
-<img width="1158" height="1092" alt="image" src="https://github.com/user-attachments/assets/45b1ae8f-dfca-40e0-a14e-064c7f45ad1b" />
 
 </div>
 
-> **In one sentence:** click *Use this template*, edit one YAML file, push — your link page is live on GitHub Pages with a free `*.github.io` domain (or your own). No SaaS, no monthly fee, no vendor lock-in. AI-assisted theming and plugin development included.
+Página oficial de links da Prefeitura de Ilhabela, construída com o
+[linkyee](https://github.com/ZhgChgLi/linkyee) e publicada no GitHub Pages.
+O projeto gera um site estático: os dados são lidos de arquivos YAML, os
+plugins Ruby são executados durante o build e o HTML final é gravado em
+`_output/`.
 
-## Table of contents
+Este documento é o guia de uso e manutenção do projeto. Ele explica onde cada
+parte do código fica, como alterar o conteúdo da página, como testar
+localmente e como publicar uma mudança com segurança.
 
-- [Why linkyee?](#why-linkyee)
-- [Configuration](#configuration)
-- [Themes 🎨](#themes-)
-- [Plugins 🔌](#plugins-)
-- [Get Started – Deploy on GitHub Pages](#get-started--deploy-on-github-pages)
-- [Local testing](#local-testing)
-- [Custom Domain](#custom-domain-)
-- [Showcase ✨](#showcase-)
-- [Donate](#donate)
+## Índice
 
----
+- [Visão geral](#visão-geral)
+- [Estrutura do projeto](#estrutura-do-projeto)
+- [Pré-requisitos](#pré-requisitos)
+- [Configuração da página](#configuração-da-página)
+- [Como editar o conteúdo](#como-editar-o-conteúdo)
+- [Temas e aparência](#temas-e-aparência)
+- [Plugins e dados dinâmicos](#plugins-e-dados-dinâmicos)
+- [Fluxo de manutenção](#fluxo-de-manutenção)
+- [Testes e pré-visualização local](#testes-e-pré-visualização-local)
+- [Publicação no GitHub Pages](#publicação-no-github-pages)
+- [Docker](#docker)
+- [Solução de problemas](#solução-de-problemas)
 
-## Why linkyee?
+## Visão geral
 
-- **100% free.** Hosted on GitHub Pages. No subscriptions, no ads, no upsells.
-- **100% yours.** Your config, themes, plugins, and content live in your own GitHub repo. Take it offline whenever you want.
-- **8 ready-made themes** — switch by editing a single line in `config.yml`.
-- **AI Style Designer.** Describe the look you want in plain English; the bundled [`linkyee-style-designer`](./.claude/skills/linkyee-style-designer/SKILL.md) Claude skill writes the full theme for you (HTML + CSS + JS).
-- **6 built-in plugins** for live data — GitHub stars, last commit, profile stats, RSS/Atom feeds, date countdowns, latest YouTube video.
-- **AI Plugin Builder.** Want data from somewhere else? Describe the source; the bundled [`linkyee-plugin-builder`](./.claude/skills/linkyee-plugin-builder/SKILL.md) skill writes the Ruby plugin and wires it in.
-- **SEO + accessibility built-in.** WCAG AA contrast, dark mode, responsive down to 320 px, OG/Twitter meta, keyboard-friendly focus states.
-- **Local preview with auto-rebuild.** `./preview.sh` rebuilds on save; refresh the browser, no plugins needed.
+O fluxo de geração é:
 
-### Buy me a beer ❤️❤️❤️
+```text
+config.yml
+    ├── conteúdo, links, redes sociais e opções
+    └── plugins configurados
+             │
+             ▼
+      scaffold.rb
+    ├── executa os plugins Ruby
+    ├── renderiza as expressões Liquid
+    ├── copia o tema escolhido
+    └── publica o resultado em _output/
+```
 
-[![Buy Me A Beer](https://github.com/user-attachments/assets/63f01edf-2aa5-4d91-8f8a-861e5b6b4feb)](https://www.paypal.com/ncp/payment/CMALMPT8UUTY2)
+O workflow [build.yml](./.github/workflows/build.yml) executa esse processo
+no GitHub Actions quando há alteração na branch `main`, manualmente ou uma
+vez por dia. A publicação é feita na branch `gh-pages`.
 
-[**If this project has helped you, feel free to sponsor me a cup of coffee, thank you.**](https://www.paypal.com/ncp/payment/CMALMPT8UUTY2)
+> **Importante:** a pasta `_output/` é gerada automaticamente. Não edite
+> arquivos dentro dela. Altere `config.yml`, `themes/`, `plugins/` ou
+> `scaffold.rb` e gere novamente o site.
 
-Feel free to open an issue or submit a fix/contribution via pull request. :)
+## Estrutura do projeto
 
----
+| Caminho | Responsabilidade |
+| --- | --- |
+| [`config.yml`](./config.yml) | Configuração principal: tema, perfil, links, redes sociais, rodapé e plugins. |
+| [`scaffold.rb`](./scaffold.rb) | Script Ruby que lê a configuração, executa plugins e renderiza o site. |
+| [`themes/`](./themes/) | Temas visuais. Cada subpasta contém `index.html`, `styles.css` e `scripts.js`. O padrão é o glassmorphism. |
+| [`plugins/`](./plugins/) | Plugins Ruby que consultam dados externos durante o build. |
+| [`plugins/README.md`](./plugins/README.md) | Referência técnica para criação e manutenção de plugins. |
+| [`assets/`](./assets/) | Arquivos compartilhados, incluindo suporte à internacionalização. |
+| [`examples/`](./examples/) | Exemplos de configurações, como o site multilíngue. |
+| [`_output/`](./_output/) | Site gerado. É recriado pelo build e não deve ser editado manualmente. |
+| [`preview.sh`](./preview.sh) | Gera o site, observa alterações e inicia um servidor local. |
+| [`deploy.sh`](./deploy.sh) | Script usado pelo GitHub Actions para publicar em `gh-pages`. |
+| [`Dockerfile`](./Dockerfile) | Imagem Docker com Ruby, dependências e o processo de rebuild. |
+| [`docker-compose.yml`](./docker-compose.yml) | Execução local do site em um contêiner. |
+| [`Gemfile`](./Gemfile) | Dependências Ruby do gerador. |
 
-## Configuration
+## Pré-requisitos
 
-Everything that ends up on your page is driven by a single file: [`config.yml`](./config.yml). It's a Liquid-rendered YAML file with five top-level sections:
+Para desenvolver diretamente na máquina:
+
+- Windows -> WSL;
+- Linux -> Bash;
+- Ruby 3.4.2 ou compatível;
+- Bundler;
+- Python 3 ou Ruby com WEBrick, para o servidor local;
+- Git.
+
+No Windows, os scripts `.sh` devem ser executados pelo **Git Bash** ou pelo
+**WSL**. Como alternativa, use Docker, descrito mais adiante.
+
+Instale as dependências uma única vez, na raiz do projeto:
+
+```bash
+bundle install
+```
+
+As dependências principais são Liquid, Nokogiri e bibliotecas padrão
+empacotadas no [`Gemfile`](./Gemfile).
+
+## Configuração da página
+
+Quase toda manutenção diária acontece em [`config.yml`](./config.yml). O
+arquivo é YAML e também aceita expressões Liquid, avaliadas durante o build.
+
+### Aparência e idioma
 
 ```yaml
-theme: default                     # ← directory under ./themes/
-lang: "en"
+theme: glassmorphism
+lang: "pt-br"
+color_scheme: auto
+```
 
-plugins:                           # ← optional dynamic data fetched at build time
-  - GithubRepoStarsCountPlugin: [ZhgChgLi/linkyee]
+- `theme` deve corresponder ao nome de uma pasta em [`themes/`](./themes/).
+- `lang` define o idioma do atributo HTML `lang`.
+- `color_scheme` pode ser `auto`, `light` ou `dark`. Em `auto`, o tema
+  acompanha a preferência do sistema do visitante.
 
-title: "Your Name"                 # ← profile header
+### Perfil
+
+```yaml
+title: "Ilhabela"
 avatar: "./images/profile.jpeg"
-name: "@yourhandle"
-tagline: "One line about you."
-
-links:                             # ← buttons in the link list
-  - link:
-      icon: "fa-brands fa-github"
-      text: "GitHub ({{ vars.GithubRepoStarsCountPlugin['ZhgChgLi/linkyee'] }} ⭐)"
-      url: "https://github.com/yourname"
-      target: "_blank"
-
-socials: [ ... ]                   # ← icon-only social row
-footer: "Free-form HTML."
-copyright: "© 2026 You."
+name: "Prefeitura de Ilhabela"
+tagline: >-
+  Capital Nacional da Vela
 ```
 
-The shipped [`config.yml`](./config.yml) is a fully working example that exercises **every built-in plugin** — read it as the canonical reference. Edit fields in place, push, wait for GitHub Actions to rebuild, refresh.
+O caminho de `avatar` é relativo ao tema. Para trocar a imagem, substitua o
+arquivo correspondente em `themes/<tema>/images/`, utilize o nome do arquivo profile.jpg, e mantenha o caminho
+coerente com o `config.yml`.
 
-### Multi-language sites
+### Links principais
 
-Configure `i18n` to render one static site for each locale. The root page
-chooses a saved or browser-matching locale, then falls back to
-`default_locale`.
-
-```yaml
-i18n:
-  default_locale: en
-  locales:
-    en: locales/en.yml
-    es: locales/es.yml
-```
-
-Each locale file overrides profile content and may supply UI labels:
-
-```yaml
-lang: es
-og_locale: es_ES
-locale_label: Español
-title: Página de enlaces
-name: Ejemplo
-ui:
-  language_switcher: Idioma
-  primary_links: Enlaces principales
-```
-
-Locale hashes merge with `config.yml`; locale arrays such as `links` and
-`socials` replace their base values. Builds create `/<locale>/` directories
-and a root redirect page. Without `i18n`, the existing single-page output is
-unchanged. See [`examples/i18n`](./examples/i18n) for a complete generic
-configuration.
-
-### Automatic redeployment
-
-The site rebuilds automatically once a day so plugin output (star counts, latest posts, etc.) stays fresh. The cron lives in [`build.yml`](../../actions/workflows/build.yml):
-
-```yaml
-schedule:
-    - cron: '0 0 * * *'   # daily at 00:00 UTC
-```
-
-Delete the `schedule:` block if you don't want scheduled redeploys.
-
----
-
-## Themes 🎨
-
-linkyee ships **8 built-in themes** designed to be drop-in usable. Switch by editing one line in `config.yml`:
-
-```yaml
-theme: minimal-mono   # any directory under ./themes/
-```
-
-| Slug | Light | Dark | Aesthetic / good for |
-|---|---|---|---|
-| `default` | <img width="200" alt="default light" src="./themes/default/preview-light.png"> | <img width="200" alt="default dark" src="./themes/default/preview-dark.png"> | Clean cards · safe default for anyone |
-| `minimal-mono` | <img width="200" alt="minimal-mono light" src="./themes/minimal-mono/preview-light.png"> | <img width="200" alt="minimal-mono dark" src="./themes/minimal-mono/preview-dark.png"> | Swiss minimal · monospace · engineers, writers |
-| `editorial-serif` | <img width="200" alt="editorial-serif light" src="./themes/editorial-serif/preview-light.png"> | <img width="200" alt="editorial-serif dark" src="./themes/editorial-serif/preview-dark.png"> | Magazine serif · drop cap · bloggers, journalists |
-| `neo-brutalism` | <img width="200" alt="neo-brutalism light" src="./themes/neo-brutalism/preview-light.png"> | <img width="200" alt="neo-brutalism dark" src="./themes/neo-brutalism/preview-dark.png"> | Thick borders · primary colors · indie devs, artists |
-| `glassmorphism` | <img width="200" alt="glassmorphism light" src="./themes/glassmorphism/preview-light.png"> | <img width="200" alt="glassmorphism dark" src="./themes/glassmorphism/preview-dark.png"> | Frosted glass cards · designers, agencies |
-| `paper-card` | <img width="200" alt="paper-card light" src="./themes/paper-card/preview-light.png"> | <img width="200" alt="paper-card dark" src="./themes/paper-card/preview-dark.png"> | Pastel cards · rounded · creators, illustrators |
-| `newsprint` | <img width="200" alt="newsprint light" src="./themes/newsprint/preview-light.png"> | <img width="200" alt="newsprint dark" src="./themes/newsprint/preview-dark.png"> | Newspaper masthead · serif + mono · numbered link rows · the live look of [link.zhgchg.li](https://link.zhgchg.li/) |
-| `terminal-retro` | <img width="200" alt="terminal-retro light" src="./themes/terminal-retro/preview-light.png"> | <img width="200" alt="terminal-retro dark" src="./themes/terminal-retro/preview-dark.png"> | CRT · scanlines · phosphor-green-on-black (dark) / olive-on-cream printer-paper (light) · hackers |
-
-Every built-in theme meets the same baseline: WCAG AA contrast, **dark mode that auto-switches with your system appearance** (no manual toggle), responsive down to 320 px, keyboard-accessible focus states, and `prefers-reduced-motion` support.
-
-To try them locally before committing, see [Local testing](#local-testing). To regenerate the preview screenshots above after any visual change, run `./scripts/screenshot-themes.sh` (requires `npx playwright`).
-
-### Modifying a theme by hand
-
-Each theme lives at `./themes/<theme-name>/` with three files:
-
-- `index.html` — Liquid template (consumes `config.yml`)
-- `styles.css` — the look
-- `scripts.js` — can be empty, but the file must exist
-
-The `default` theme self-hosts Font Awesome under `themes/default/fontawesome/`. The other built-ins load Font Awesome from a CDN to keep theme directories small.
-
-### 🤖 AI Style Designer — generate a theme by description
-
-Don't see a vibe you like? Describe it in plain English and the bundled [`linkyee-style-designer`](./.claude/skills/linkyee-style-designer/SKILL.md) Claude skill writes a full theme for you.
-
-**How to use it:**
-
-1. Install [Claude Code](https://docs.claude.com/en/docs/claude-code/overview) and open this repo with it.
-2. Ask in natural language. Examples:
-
-   > *"Design a linkyee theme inspired by 1960s Penguin paperback covers."*
-   >
-   > *"Make my links look like a Japanese ryokan website — quiet, elegant, lots of negative space."*
-   >
-   > *"I want a vaporwave aesthetic but keep it accessible."*
-3. The skill reads your `config.yml`, asks clarifying questions if the brief is vague, generates `themes/<your-theme>/`, switches `theme:` in `config.yml`, and runs the build.
-4. Run `./preview.sh <new-theme>` to see the result locally.
-
-The skill enforces the same quality bar as the built-in themes: no AI slop (no unwarranted purple-pink gradients, no emoji-as-icons, no centered-everything-no-hierarchy), real typographic hierarchy, accessibility minimums, and **strict RWD** — mobile-first, ≥44 px tap targets, no horizontal scroll at 320 px.
-
-**Deeper design tooling.** If you want a richer designer experience (multi-direction exploration, expert review, animation export), install the upstream [`huashu-design`](https://github.com/alchaincyf/huashu-design) skill alongside it. The linkyee skill defers to `huashu-design` when both are present.
-
----
-
-## Plugins 🔌
-
-Plugins are tiny Ruby classes that fetch data **at build time** and inject it into your page. Use them to render live values inside any link, the tagline, or the footer — anything that's a Liquid string.
-
-### Built-in plugins
-
-| Plugin | What it emits | Reference shape |
-|---|---|---|
-| `GithubRepoStarsCountPlugin` | Star count for one or more repos | `{{ vars.GithubRepoStarsCountPlugin['owner/repo'] }}` |
-| `GithubLastCommitPlugin` | Latest commit `sha` / `date` / `message` | `{{ vars.GithubLastCommitPlugin['owner/repo'].date }}` |
-| `GithubProfilePlugin` | `followers` / `following` / `repos` | `{{ vars.GithubProfilePlugin['user'].followers }}` |
-| `RSSFeedPlugin` | Latest items (Medium / blog / podcast / YouTube feeds) | `{{ vars.RSSFeedPlugin['url'][0].title }}` |
-| `CountdownPlugin` | Days until / since a target date | `{{ vars.CountdownPlugin.label.days }}` |
-| `YouTubeChannelLatestVideoPlugin` | Latest video — title, URL, thumbnail | `{{ vars.YouTubeChannelLatestVideoPlugin['@handle'].title }}` |
-
-Enable in `config.yml`:
-
-```yaml
-plugins:
-  - GithubRepoStarsCountPlugin:
-      - ZhgChgLi/linkyee
-  - RSSFeedPlugin:
-      - https://yourblog.example/feed.xml
-```
-
-…then reference the result anywhere a Liquid string is rendered:
+Cada item em `links` tem a seguinte estrutura:
 
 ```yaml
 links:
   - link:
-      icon: "fa-brands fa-github"
-      text: "linkyee ({{ vars.GithubRepoStarsCountPlugin['ZhgChgLi/linkyee'] }} ⭐)"
-      url: "https://github.com/ZhgChgLi/linkyee"
+      icon: "fa-solid fa-globe"
+      text: "Portal da Prefeitura"
+      url: "https://www.ilhabela.sp.gov.br"
+      alt: "Portal da Prefeitura de Ilhabela"
+      title: "Portal da Prefeitura de Ilhabela"
+      target: "_blank"
 ```
 
-If a plugin fails at build time (network error, API change, expired token, …) the build still succeeds — the value renders empty and the failure is logged in GitHub Actions output. Your site never breaks because of a flaky external API.
+- `icon`: classe do [Font Awesome](https://fontawesome.com/search?o=r&m=free).
+- `text`: texto visível; pode conter HTML e Liquid.
+- `url`: endereço de destino.
+- `alt`: descrição para acessibilidade.
+- `title`: texto de apoio exibido pelo navegador.
+- `target`: use `_blank` para abrir uma nova aba ou `_self` para reutilizar a
+  aba atual.
+- `latest: true`: aplica a indicação visual de conteúdo mais recente nos
+  temas que suportam esse recurso.
 
-### 🤖 AI Plugin Builder — generate a plugin by description
+Para adicionar um link, copie um bloco existente, altere os campos e preserve
+o recuo YAML. Um recuo incorreto impede a geração da página.
 
-Want data linkyee doesn't ship out of the box? Open the repo with [Claude Code](https://docs.claude.com/en/docs/claude-code/overview) and describe what you want. The bundled [`linkyee-plugin-builder`](./.claude/skills/linkyee-plugin-builder/SKILL.md) skill knows the plugin contract.
+### Redes sociais
 
-**Examples:**
+Os itens de `socials` seguem o mesmo padrão, mas usam `social`:
 
-> *"Add a plugin that shows my 3 latest posts from medium.com/@myhandle as new links."*
->
-> *"Fetch the current weather in Taipei from wttr.in and show the temp in the footer."*
->
-> *"Add a plugin that pulls my Steam total playtime via the Steam Web API."*
+```yaml
+socials:
+  - social:
+      icon: "fa-brands fa-instagram"
+      url: "https://www.instagram.com/prefeituradeilhabelaoficial/"
+      title: "Instagram da Prefeitura de Ilhabela"
+      alt: "Instagram da Prefeitura de Ilhabela"
+      target: "_blank"
+```
 
-The skill will:
+### Rodapé e ano automático
 
-1. Confirm the data source and shape with you.
-2. Generate `plugins/<YourPlugin>.rb` (using the base-class HTTP/JSON/cache helpers — no raw `Net::HTTP`).
-3. Wire it into `config.yml` under `plugins:` and reference the output where you asked it to appear.
-4. Run `bundle exec ruby ./scaffold.rb` and verify the value rendered in `_output/index.html`.
+`footer` e `copyright` aceitam HTML e Liquid. O gerador fornece `year`,
+`month`, `day` e `today` automaticamente:
 
-### Developer wiki
+```yaml
+footer: "Prefeitura Municipal de Ilhabela"
+copyright: "© {{ year }} Powered by linkyee"
+```
 
-For the full plugin contract — base-class helpers, common patterns (HTTP, JSON, scrape, cache), Liquid rendering rules, and debugging tips — read **[`plugins/README.md`](./plugins/README.md)**. It's the canonical reference the AI skill loads when it generates a plugin.
+## Como editar o conteúdo
 
----
+### Alteração comum de texto ou endereço
 
-## Get Started – Deploy on GitHub Pages
-### About Github Pages
-> GitHub Pages is a free hosting service provided by GitHub, designed for creating and publishing websites directly from a GitHub repository. It allows developers, designers, and anyone with a GitHub account to host personal, project, or organizational websites without needing external hosting services. GitHub Pages works seamlessly with GitHub repositories, automatically generating a static website whenever new content is pushed.
+1. Abra [`config.yml`](./config.yml).
+2. Localize o bloco de perfil, `links`, `socials` ou rodapé.
+3. Altere somente o valor necessário.
+4. Execute o build local.
+5. Abra a página gerada e verifique o link, o texto e a aparência em celular.
+6. Faça commit e abra um pull request ou envie a alteração para `main`.
 
-#### Step 1. Click the “Use this template” button at the top-right corner of the [linkyee](https://github.com/ZhgChgLi/linkyee) Template Repo -> “Create a new repository”:
-![image](https://github.com/user-attachments/assets/4b88da62-df4b-4f3b-a22c-e78b7527a92d)
+### Alteração do layout
 
-#### Step 2. Check “Include all branches,” enter your desired GitHub Pages repo name, and click “Create repository” once finished:
-![image](https://github.com/user-attachments/assets/d3611204-7507-41a1-8221-707200a3e269)
+O arquivo [`themes/glassmorphism/index.html`](./themes/glassmorphism/index.html)
+define a marcação HTML e as expressões Liquid. O CSS fica em
+[`themes/glassmorphism/styles.css`](./themes/glassmorphism/styles.css), e o
+JavaScript opcional em `scripts.js`.
 
-> The GitHub Pages repo name will affect the access URL. If you enter `your-username.github.io` as the Repo Name, that will be the direct URL to your GitHub Pages site.
-> If you already have a `your-username.github.io` repo, the GitHub Pages URL will be `your-username.github.io/Repo-Name`.
+Para alterar o tema atualmente publicado:
 
-#### Wait for the fork to complete. You might encounter deployment errors during the initial setup due to forked repo permission issues. Let’s proceed with the steps to adjust this.
-![image](https://github.com/user-attachments/assets/038fac9e-83eb-4f2f-ba9a-88712b4af022)
+1. Edite os arquivos da pasta do tema escolhido.
+2. Preserve os campos esperados por `config.yml`, como `links`, `socials`,
+   `title`, `name`, `tagline` e `footer`.
+3. Mantenha foco visível, contraste adequado, responsividade e suporte a
+   `prefers-reduced-motion`.
+4. Teste em largura de 320 px ou maior e nos modos claro e escuro.
 
-#### Step 4. Go to Settings -> Actions -> General, ensure the following options are selected:
-![image](https://github.com/user-attachments/assets/6851c4e6-9466-4800-862f-e9e5e5b65b11)
+Para criar um novo tema, copie uma pasta existente para `themes/<novo-nome>/`,
+mantenha os três arquivos (`index.html`, `styles.css` e `scripts.js`) e altere
+`theme:` no `config.yml`.
 
-- Actions permissions: `Allow all actions and reusable workflows`
-- Workflow permissions: `Read and write permissions`
+## Plugins e dados dinâmicos
 
-After selecting, click the Save button to save your changes.
+Plugins são classes Ruby executadas no build. O projeto inclui:
 
-#### Step 5. Go to Settings -> Pages and ensure the selected branch for GitHub Pages is set to “gh-pages”:
-![image](https://github.com/user-attachments/assets/1802bc78-4615-4d29-b180-9c84f3fb8d6d)
+| Plugin | Uso |
+| --- | --- |
+| `GithubRepoStarsCountPlugin` | Quantidade de estrelas de repositórios. |
+| `GithubLastCommitPlugin` | SHA, data e mensagem do último commit. |
+| `GithubProfilePlugin` | Seguidores e repositórios públicos de um usuário. |
+| `RSSFeedPlugin` | Últimos itens de um feed RSS ou Atom. |
+| `CountdownPlugin` | Dias até ou desde uma data. |
+| `YouTubeChannelLatestVideoPlugin` | Último vídeo de um canal. |
 
-> 	The message `Your site is live at: XXXX` above is your public GitHub Pages access URL.
+Os plugins são habilitados em `config.yml`:
 
-#### Step 6. Go to Settings -> Actions and wait for the first deployment to complete:
-![image](https://github.com/user-attachments/assets/e57336ef-2f35-4455-abc0-76dce07470ee)
+```yaml
+plugins:
+  - RSSFeedPlugin:
+      - https://www.ilhabela.sp.gov.br/portal/rss
+```
 
-#### Step 7. Access the GitHub Pages URL to ensure the fork was successful:
-![image](https://github.com/user-attachments/assets/023c39f7-9351-4175-8c9f-5eb42e2ecdb9)
+O resultado pode ser usado em qualquer texto renderizado por Liquid:
 
-> Congratulations! Deployment successful. You can now modify the configuration files with your own data. 🎉🎉🎉
+```yaml
+text: "{{ vars.RSSFeedPlugin['https://www.ilhabela.sp.gov.br/portal/rss'][0].title }}"
+url: "{{ vars.RSSFeedPlugin['https://www.ilhabela.sp.gov.br/portal/rss'][0].url }}"
+```
 
-#### Please note that after each files modification, you need to wait for GitHub Actions to complete the `Automatic build` and `pages build and deployment` tasks.
+Consulte [`plugins/README.md`](./plugins/README.md) antes de criar ou alterar
+um plugin. Essa documentação explica o contrato da classe `Plugin`, acesso
+HTTP, cache, JSON, Liquid e tratamento de erros.
 
-![image](https://github.com/user-attachments/assets/0ba637cc-3bb6-4458-a076-5f754c7429b3)
+### Regras para plugins
 
-Refresh the page for the changes to take effect. 🚀
+- O arquivo deve ser `plugins/NomeDoPlugin.rb` e a classe deve ter o mesmo
+  nome.
+- A classe deve herdar de `Plugin` e implementar `execute`.
+- Retorne sempre o mesmo formato de dados, inclusive quando a fonte externa
+  falhar.
+- __**Não coloque tokens, chaves de API ou senhas no código ou no `config.yml`.**__
+- Para dados autenticados, use secrets do GitHub Actions e leia-os com
+  `ENV["NOME_DO_SECRET"]`.
 
----
+O build registra a falha de um plugin e continua a geração, mas o valor
+correspondente pode aparecer vazio. Sempre confira o log e o HTML gerado.
 
-## Local testing
+## Fluxo de manutenção
 
-Build and serve the site on `http://localhost:8080`:
+### Antes de editar
+
+- Confirme se a mudança é de conteúdo (`config.yml`), visual (`themes/`) ou
+  comportamento de build/plugin (`scaffold.rb` ou `plugins/`).
+- Verifique se há alterações locais com `git status`.
+- Não edite `_output/` nem arquivos gerados.
+
+### Depois de editar
+
+Execute:
 
 ```bash
-./preview.sh                    # build with the theme currently set in config.yml
-./preview.sh minimal-mono       # temporarily switch to <theme-name>, build, serve;
-                                # restores config.yml on Ctrl-C
-PORT=4000 ./preview.sh          # use a different port
+bundle exec ruby ./scaffold.rb
 ```
 
-When you pass a theme argument, `preview.sh` makes a backup of your `config.yml`, switches to the requested theme for the session, and restores the original on `Ctrl-C` — your committed config is never modified.
+Depois confira:
 
-### Auto-rebuild on save
+- `_output/index.html` foi gerado;
+- todos os links abrem o destino correto;
+- imagens e ícones aparecem;
+- não há `{{ ... }}` ou mensagens de erro no HTML;
+- a página funciona em modo claro, escuro e em telas pequenas, responsivo.
 
-While the preview is running, `preview.sh` watches:
+Para mudanças no tema, atualize as imagens de prévia somente se necessário,
+usando [`scripts/screenshot-themes.sh`](./scripts/screenshot-themes.sh) com
+Playwright instalado.
 
-- `themes/`
-- `plugins/`
-- `config.yml`
-- `scaffold.rb`
+### Commits e publicação
 
-Any change triggers an instant rebuild — just refresh the browser. Install [`fswatch`](https://github.com/emcrisostomo/fswatch) (`brew install fswatch` on macOS) for sub-second reaction; otherwise it falls back to a 1-second polling loop that works without any extra dependencies.
+Prefira commits pequenos e descritivos, por exemplo:
 
-If a build fails (e.g. a broken Liquid reference), the watcher prints the error and keeps running — fix the issue, save again, the next save rebuilds.
+```text
+Atualiza link do portal de serviços
+Ajusta contraste do tema glassmorphism
+Corrige feed de notícias da Prefeitura
+```
 
-### Requirements
+Não inclua arquivos com secrets, credenciais ou dados pessoais. O workflow
+ignora alterações apenas documentais em alguns casos, então uma mudança no
+README não dispara publicação; alterações em `config.yml`, temas e plugins
+disparam o build.
 
-- Ruby (`bundle install` once to fetch `liquid` and `nokogiri`)
-- Python 3 (or Ruby) for the static file server `preview.sh` spawns
+## Testes e pré-visualização local
 
-## Container deployment
+O modo recomendado para desenvolvimento é:
 
-Build and run the generated site with Docker Compose:
+```bash
+./preview.sh
+```
+
+Acesse <http://localhost:8080>. O script recompila ao detectar alterações em
+`themes/`, `plugins/`, `config.yml` e `scaffold.rb`; basta atualizar o
+navegador.
+
+É possível testar outro tema sem alterar permanentemente o arquivo:
+
+```bash
+./preview.sh minimal-mono
+```
+
+Ao interromper com `Ctrl+C`, o `config.yml` original é restaurado. Para usar
+outra porta:
+
+```bash
+PORT=4000 ./preview.sh
+```
+
+O teste mínimo para qualquer alteração é:
+
+```bash
+bundle exec ruby ./scaffold.rb
+```
+
+Se houver falha, corrija o erro indicado no terminal antes de publicar.
+
+## Docker
+
+Quando Ruby ou Bash não estiverem disponíveis, execute a aplicação em Docker:
 
 ```bash
 docker compose up -d --build
 ```
 
-The service listens on port `8080` by default. Override it with `PORT`, and
-set `REBUILD_INTERVAL` in seconds when plugin data should be refreshed:
+A página ficará disponível em <http://localhost:8080>. Para alterar a porta
+ou a frequência de atualização dos plugins:
 
 ```bash
 PORT=8081 REBUILD_INTERVAL=3600 docker compose up -d --build
 ```
 
-The image contains the application source. A named Docker volume persists
-plugin cache data, while the generated output remains inside the container.
+O volume Docker `plugin-cache` conserva o cache dos plugins entre reinícios.
+Para acompanhar os logs:
 
----
+```bash
+docker compose logs -f linkyee
+```
 
-## Custom Domain ❤️❤️❤️
+## Solução de problemas
 
-You can set a custom GitHub Pages domain, such as my own: [https://link.zhgchg.li](https://link.zhgchg.li).
+### O build falha com erro de YAML
 
-Follow [my tutorial for domain binding.](https://en.zhgchg.li/posts/zrealm-dev/github-pages-custom-domain-setup-replace-github-io-with-your-own-domain-483af5d93297) If you'd like, you can [purchase a domain through my Namecheap referral](https://namecheap.pxf.io/P0jdZQ) link — I'll earn a small commission, which helps me keep contributing to open-source projects.
+Confira indentação, aspas e listas em `config.yml`. YAML é sensível a espaços;
+use espaços, não tabulações. Compare com os blocos já existentes.
 
----
+### Um link dinâmico aparece vazio
 
-## Showcase ✨
+Execute `bundle exec ruby ./scaffold.rb` e leia os avisos no terminal. A fonte
+externa pode estar indisponível, ter alterado o formato ou exigir credencial.
+Confirme também se o nome do plugin e a chave usada em `vars.<Plugin>` estão
+exatos.
 
-Real websites built with **linkyee** — fast, clean, and open-source.
+### O tema não é encontrado
 
-> Built your own site with linkyee?  
-> ⭐ Add it here by opening a PR and inspire others!
+O valor de `theme:` deve ser exatamente o nome de uma pasta em
+[`themes/`](./themes/). Por exemplo, `glassmorphism` e `minimal-mono` são
+válidos; nomes de arquivos ou caminhos completos não são.
 
-| Preview | Website | Description |
-|--------|--------|-------------|
-| <img width="180" height="180" alt="ZhgChgLi" src="https://github.com/user-attachments/assets/9052e290-f6b8-4a94-a71e-85ec36cd2900" /> | [link.zhgchg.li](https://link.zhgchg.li) | ZhgChgLi (Harry Li)'s Personal blog link page |
-| - |Your Site | Your site could be featured here 🚀 |
+### O navegador mostra uma versão antiga
 
----
+Atualize a página sem usar cache. O `preview.sh` envia cabeçalhos
+`no-cache`; no GitHub Pages, aguarde a conclusão do workflow e teste em uma
+janela anônima.
 
-## Donate
+### O GitHub Actions não publicou
 
-[![Buy Me A Beer](https://github.com/user-attachments/assets/63f01edf-2aa5-4d91-8f8a-861e5b6b4feb)](https://www.paypal.com/ncp/payment/CMALMPT8UUTY2)
+Abra o job **Automatic build**, leia o primeiro erro e reproduza localmente.
+Verifique especialmente permissões de escrita do workflow, dependências Ruby,
+URLs dos feeds e alterações de YAML. Não execute `deploy.sh` manualmente:
+ele exige o ambiente do GitHub Actions.
 
-## About
-- [ZhgChg.Li](https://zhgchg.li/)
-- [ZhgChgLi's Medium](https://blog.zhgchg.li/)
+## Links úteis
 
-## Other works
-### Swift Libraries
-- [ZMarkupParser](https://github.com/ZhgChgLi/ZMarkupParser) is a pure-Swift library that helps you to convert HTML strings to NSAttributedString with customized style and tags.
-- [ZPlayerCacher](https://github.com/ZhgChgLi/ZPlayerCacher) is a lightweight implementation of the AVAssetResourceLoaderDelegate protocol that enables AVPlayerItem to support caching streaming files.
-
-### Integration Tools
-- [XCFolder](https://github.com/ZhgChgLi/XCFolder) is a powerful command-line tool that converts Xcode virtual groups into actual directories, reorganizing your project structure to align with Xcode groups and enabling seamless integration with modern Xcode project generation tools like Tuist and XcodeGen.
-- [ZReviewTender](https://github.com/ZhgChgLi/ZReviewTender) is a tool for fetching app reviews from the App Store and Google Play Console and integrating them into your workflow.
-- [ZMediumToMarkdown](https://github.com/ZhgChgLi/ZMediumToMarkdown) is a powerful tool that allows you to effortlessly download and convert your Medium posts to Markdown format.
+- [Repositório original do linkyee](https://github.com/ZhgChgLi/linkyee)
+- [GitHub Pages](https://docs.github.com/pt/pages)
+- [Documentação de plugins](./plugins/README.md)
+- [Exemplo de internacionalização](./examples/i18n/)
