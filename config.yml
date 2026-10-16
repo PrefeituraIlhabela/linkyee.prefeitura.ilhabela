@@ -78,7 +78,7 @@ google_analytics_id:
 # Profile header
 # -----------------------------------------------------------------------------
 title: "Ilhabela"
-avatar: "./images/profile.jpeg"
+avatar: "./images/profile.png"
 name: "Prefeitura de Ilhabela"
 tagline: >-
     Capital Nacional da Vela
@@ -129,15 +129,6 @@ links:
       target: "_blank"
       latest: true # Marca como a última notícia 
 
-  # → uses YouTubeChannelLatestVideoPlugin
-  - link:
-      icon: "fa-brands fa-youtube"
-      text: "{{ vars.YouTubeChannelLatestVideoPlugin['https://www.youtube.com/@PrefeituradeIlhabelaOficial'].title }}" # Título do último vídeo
-      url: "{{ vars.YouTubeChannelLatestVideoPlugin['https://www.youtube.com/@PrefeituradeIlhabelaOficial'].url }}" # URL do último vídeo
-      alt: "Latest YouTube video" # Texto de acessibilidade
-      title: "Latest YouTube video" 
-      target: "_blank"
-      latest: true # Marca como o último vídeo
 
 # -----------------------------------------------------------------------------
 # Social media buttons
@@ -182,4 +173,4 @@ footer: >
     Prefeitura Municipal de Ilhabela
 
 copyright: >
-  © {{ year }} Powered by <a href="https://github.com/ZhgChgLi/linkyee" target="_blank">linkyee</a> Customized for <a href="https://www.ilhabela.sp.gov.br" target="_blank">Prefeitura de Ilhabela</a> by <a href="https://github.com/antoniowf" target="_blank">AntonioWF</a>.
+  © {{ year }} Powered by <a href="https://github.com/ZhgChgLi/linkyee" target="_blank">linkyee</a> Customized for <a href="https://www.ilhabela.sp.gov.br" target="_blank">Prefeitura de Ilhabela</a> by <a href="https://github.com/antoniowf" target="_blank">AntonioWF</a> 🖤.
