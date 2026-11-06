@@ -1,0 +1,67 @@
+lang: zh-CN
+og_locale: zh_CN
+locale_label: 简体中文
+
+title: 伊利亚贝拉
+name: 伊利亚贝拉市政府
+tagline: 巴西国家帆船之都
+
+links:
+  - link:
+      icon: "fa-solid fa-wifi"
+      text: "连接 WiFi<span class='link-button-text'>伊利亚贝拉互联</span>"
+      url: "http://neverssl.com"
+      alt: "如何连接 WiFi"
+      title: "WiFi - 伊利亚贝拉互联"
+      target: "_blank"
+  - link:
+      icon: "fa-solid fa-cloud"
+      text: "如何连接"
+      url: "https://www.ilhabela.sp.gov.br/wifi#rede"
+      alt: "伊利亚贝拉互联项目 - 全民 WiFi"
+      title: "伊利亚贝拉互联项目 - 全民 WiFi"
+      target: "_blank"
+  - link:
+      icon: "fa-solid fa-globe"
+      text: "伊利亚贝拉市政府网站"
+      url: "https://www.ilhabela.sp.gov.br"
+      alt: "伊利亚贝拉市政府网站"
+      title: "伊利亚贝拉市政府网站"
+      target: "_blank"
+  - link:
+      icon: "fa-solid fa-newspaper"
+      text: "{{ vars.RSSFeedPlugin['https://www.ilhabela.sp.gov.br/portal/rss'][0].title }}"
+      url: "{{ vars.RSSFeedPlugin['https://www.ilhabela.sp.gov.br/portal/rss'][0].url }}"
+      alt: "伊利亚贝拉市政府新闻"
+      title: "伊利亚贝拉市政府 RSS"
+      target: "_blank"
+      latest: true
+
+socials:
+  - social: { icon: "fa-brands fa-tiktok", url: "https://www.tiktok.com/@prefeituradeilhabela", title: "伊利亚贝拉市政府 TikTok", alt: "伊利亚贝拉市政府 TikTok", target: "_blank" }
+  - social: { icon: "fa-brands fa-facebook", url: "https://www.facebook.com/PrefeituraIlhabela", title: "伊利亚贝拉市政府 Facebook", alt: "伊利亚贝拉市政府 Facebook", target: "_blank" }
+  - social: { icon: "fa-brands fa-youtube", url: "https://www.youtube.com/@PrefeituradeIlhabelaOficial", title: "伊利亚贝拉市政府 YouTube", alt: "伊利亚贝拉市政府 YouTube", target: "_blank" }
+  - social: { icon: "fa-brands fa-instagram", url: "https://www.instagram.com/prefeituradeilhabelaoficial/", title: "伊利亚贝拉市政府 Instagram", alt: "伊利亚贝拉市政府 Instagram", target: "_blank" }
+  - social: { icon: "fa-solid fa-envelope", url: "mailto:protocolo@ilhabela.sp.gov.br", title: "电子邮件：protocolo@ilhabela.sp.gov.br", alt: "protocolo@ilhabela.sp.gov.br", target: "_blank" }
+
+footer: 伊利亚贝拉市政府
+copyright: >
+  © {{ year }} Powered by <a href="https://github.com/ZhgChgLi/linkyee" target="_blank">linkyee</a> Customized by <a href="https://github.com/antoniowf" target="_blank">AntonioWF</a>.
+
+ui:
+  language_switcher: 语言
+  profile_picture: 头像
+  primary_links: 主要链接
+  latest: 最新
+  new: 新
+  terminal_latest: "[新]"
+  selected_works: 精选作品和频道
+  elsewhere: 其他平台
+  personal_edition: 个人版
+  terminal_links: "$ ls ./链接/"
+  terminal_socials: "$ cat ./社交网络"
+  terminal_footer: "$ tail -n 1 ./页脚"
+  newsprint_volume: "第 {{ year }} 卷 · 链接"
+  newsprint_links: "01 / 链接"
+  newsprint_connect: "02 / 连接"
+  entries: 条目

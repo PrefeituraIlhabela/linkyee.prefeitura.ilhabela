@@ -21,8 +21,16 @@ i18n:
   locales:
     pt-br: locales/pt-br.yml
     en: locales/en.yml
+    de: locales/de.yml
     es: locales/es.yml
     fr: locales/fr.yml
+    zh-cn: locales/zh-cn.yml
+    hi: locales/hi.yml
+    ar: locales/ar.yml
+    bn: locales/bn.yml
+    ru: locales/ru.yml
+    th: locales/th.yml
+    zu: locales/zu.yml
 
 # Force a color scheme regardless of the visitor's system appearance:
 #   auto  — follow OS (default; the page auto-switches between light/dark)
@@ -108,13 +116,13 @@ links:
       icon: "fa-solid fa-wifi" # Icone 
       text: "Conecte-se ao WiFi<span class='link-button-text'>Ilhabela Conectada</span>" # Texto do botão
       url: "http://neverssl.com" # URL de destino   
-      alt: "Conecte-se ao WiFi" # Texto de acessibilidade
+      alt: "Como conectar-se ao WiFi" # Texto de acessibilidade
       title: "Wifi - Ilhabela Conectada" # Título do link
       target: "_blank" # Abre em uma nova aba
 
   - link:
       icon: "fa-solid fa-cloud"
-      text: "Projeto - Ilhabela Conectada <span class='link-button-text'>Wifi para todos</span>"
+      text: "Como conectar-se"
       url: "https://www.ilhabela.sp.gov.br/wifi#rede"
       alt: "Projeto Ilhabela Conectada - Wifi para todos"
       title: "Projeto Ilhabela Conectada - Wifi para todos"
@@ -183,4 +191,4 @@ footer: >
     Prefeitura Municipal de Ilhabela
 
 copyright: >
-  © {{ year }} Powered by <a href="https://github.com/ZhgChgLi/linkyee" target="_blank">linkyee</a> Customized for <a href="https://www.ilhabela.sp.gov.br" target="_blank">Prefeitura de Ilhabela</a> by <a href="https://github.com/antoniowf" target="_blank">AntonioWF</a> 🖤.
+  © {{ year }} Powered by <a href="https://github.com/ZhgChgLi/linkyee" target="_blank">linkyee</a> Customized by <a href="https://github.com/antoniowf" target="_blank">AntonioWF</a>.

@@ -1,0 +1,67 @@
+lang: th
+og_locale: th_TH
+locale_label: ภาษาไทย
+
+title: อิลญาเบลา
+name: เทศบาลเมืองอิลญาเบลา
+tagline: เมืองหลวงแห่งการแล่นเรือใบของบราซิล
+
+links:
+  - link:
+      icon: "fa-solid fa-wifi"
+      text: "เชื่อมต่อ WiFi<span class='link-button-text'>อิลญาเบลาคอนเน็กเต็ด</span>"
+      url: "http://neverssl.com"
+      alt: "วิธีเชื่อมต่อ WiFi"
+      title: "WiFi - อิลญาเบลาคอนเน็กเต็ด"
+      target: "_blank"
+  - link:
+      icon: "fa-solid fa-cloud"
+      text: "วิธีเชื่อมต่อ"
+      url: "https://www.ilhabela.sp.gov.br/wifi#rede"
+      alt: "โครงการอิลญาเบลาคอนเน็กเต็ด - WiFi สำหรับทุกคน"
+      title: "โครงการอิลญาเบลาคอนเน็กเต็ด - WiFi สำหรับทุกคน"
+      target: "_blank"
+  - link:
+      icon: "fa-solid fa-globe"
+      text: "เว็บไซต์เทศบาลเมืองอิลญาเบลา"
+      url: "https://www.ilhabela.sp.gov.br"
+      alt: "เว็บไซต์เทศบาลเมืองอิลญาเบลา"
+      title: "เว็บไซต์เทศบาลเมืองอิลญาเบลา"
+      target: "_blank"
+  - link:
+      icon: "fa-solid fa-newspaper"
+      text: "{{ vars.RSSFeedPlugin['https://www.ilhabela.sp.gov.br/portal/rss'][0].title }}"
+      url: "{{ vars.RSSFeedPlugin['https://www.ilhabela.sp.gov.br/portal/rss'][0].url }}"
+      alt: "ข่าวสารจากเทศบาลเมืองอิลญาเบลา"
+      title: "RSS เทศบาลเมืองอิลญาเบลา"
+      target: "_blank"
+      latest: true
+
+socials:
+  - social: { icon: "fa-brands fa-tiktok", url: "https://www.tiktok.com/@prefeituradeilhabela", title: "TikTok เทศบาลเมืองอิลญาเบลา", alt: "TikTok เทศบาลเมืองอิลญาเบลา", target: "_blank" }
+  - social: { icon: "fa-brands fa-facebook", url: "https://www.facebook.com/PrefeituraIlhabela", title: "Facebook เทศบาลเมืองอิลญาเบลา", alt: "Facebook เทศบาลเมืองอิลญาเบลา", target: "_blank" }
+  - social: { icon: "fa-brands fa-youtube", url: "https://www.youtube.com/@PrefeituradeIlhabelaOficial", title: "YouTube เทศบาลเมืองอิลญาเบลา", alt: "YouTube เทศบาลเมืองอิลญาเบลา", target: "_blank" }
+  - social: { icon: "fa-brands fa-instagram", url: "https://www.instagram.com/prefeituradeilhabelaoficial/", title: "Instagram เทศบาลเมืองอิลญาเบลา", alt: "Instagram เทศบาลเมืองอิลญาเบลา", target: "_blank" }
+  - social: { icon: "fa-solid fa-envelope", url: "mailto:protocolo@ilhabela.sp.gov.br", title: "อีเมล: protocolo@ilhabela.sp.gov.br", alt: "protocolo@ilhabela.sp.gov.br", target: "_blank" }
+
+footer: เทศบาลเมืองอิลญาเบลา
+copyright: >
+  © {{ year }} Powered by <a href="https://github.com/ZhgChgLi/linkyee" target="_blank">linkyee</a> Customized by <a href="https://github.com/antoniowf" target="_blank">AntonioWF</a>.
+
+ui:
+  language_switcher: ภาษา
+  profile_picture: รูปโปรไฟล์
+  primary_links: ลิงก์หลัก
+  latest: ล่าสุด
+  new: ใหม่
+  terminal_latest: "[ใหม่]"
+  selected_works: ผลงานและช่องที่เลือก
+  elsewhere: ที่อื่น ๆ
+  personal_edition: ฉบับส่วนตัว
+  terminal_links: "$ ls ./ลิงก์/"
+  terminal_socials: "$ cat ./โซเชียล"
+  terminal_footer: "$ tail -n 1 ./ส่วนท้าย"
+  newsprint_volume: "เล่ม {{ year }} · ลิงก์"
+  newsprint_links: "01 / ลิงก์"
+  newsprint_connect: "02 / การเชื่อมต่อ"
+  entries: รายการ

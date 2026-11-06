@@ -1,0 +1,67 @@
+lang: de
+og_locale: de_DE
+locale_label: Deutsch
+
+title: Ilhabela
+name: Stadtverwaltung Ilhabela
+tagline: Nationale Segelsporthauptstadt Brasiliens
+
+links:
+  - link:
+      icon: "fa-solid fa-wifi"
+      text: "Mit dem WiFi verbinden<span class='link-button-text'>Ilhabela Verbunden</span>"
+      url: "http://neverssl.com"
+      alt: "So verbinden Sie sich mit dem WiFi"
+      title: "WiFi – Ilhabela Verbunden"
+      target: "_blank"
+  - link:
+      icon: "fa-solid fa-cloud"
+      text: "Ilhabela-Verbunden-Projekt<span class='link-button-text'>WiFi für alle</span>"
+      url: "https://www.ilhabela.sp.gov.br/wifi#rede"
+      alt: "Ilhabela-Verbunden-Projekt – WiFi für alle"
+      title: "Ilhabela-Verbunden-Projekt – WiFi für alle"
+      target: "_blank"
+  - link:
+      icon: "fa-solid fa-globe"
+      text: "Website der Stadtverwaltung Ilhabela"
+      url: "https://www.ilhabela.sp.gov.br"
+      alt: "Website der Stadtverwaltung Ilhabela"
+      title: "Website der Stadtverwaltung Ilhabela"
+      target: "_blank"
+  - link:
+      icon: "fa-solid fa-newspaper"
+      text: "{{ vars.RSSFeedPlugin['https://www.ilhabela.sp.gov.br/portal/rss'][0].title }}"
+      url: "{{ vars.RSSFeedPlugin['https://www.ilhabela.sp.gov.br/portal/rss'][0].url }}"
+      alt: "Nachrichten der Stadtverwaltung Ilhabela"
+      title: "RSS der Stadtverwaltung Ilhabela"
+      target: "_blank"
+      latest: true
+
+socials:
+  - social: { icon: "fa-brands fa-tiktok", url: "https://www.tiktok.com/@prefeituradeilhabela", title: "TikTok der Stadtverwaltung Ilhabela", alt: "TikTok der Stadtverwaltung Ilhabela", target: "_blank" }
+  - social: { icon: "fa-brands fa-facebook", url: "https://www.facebook.com/PrefeituraIlhabela", title: "Facebook der Stadtverwaltung Ilhabela", alt: "Facebook der Stadtverwaltung Ilhabela", target: "_blank" }
+  - social: { icon: "fa-brands fa-youtube", url: "https://www.youtube.com/@PrefeituradeIlhabelaOficial", title: "YouTube der Stadtverwaltung Ilhabela", alt: "YouTube der Stadtverwaltung Ilhabela", target: "_blank" }
+  - social: { icon: "fa-brands fa-instagram", url: "https://www.instagram.com/prefeituradeilhabelaoficial/", title: "Instagram der Stadtverwaltung Ilhabela", alt: "Instagram der Stadtverwaltung Ilhabela", target: "_blank" }
+  - social: { icon: "fa-solid fa-envelope", url: "mailto:protocolo@ilhabela.sp.gov.br", title: "E-Mail: protocolo@ilhabela.sp.gov.br", alt: "protocolo@ilhabela.sp.gov.br", target: "_blank" }
+
+footer: Stadtverwaltung Ilhabela
+copyright: >
+  © {{ year }} Powered by <a href="https://github.com/ZhgChgLi/linkyee" target="_blank">linkyee</a> Customized by <a href="https://github.com/antoniowf" target="_blank">AntonioWF</a>.
+
+ui:
+  language_switcher: Sprache
+  profile_picture: Profilbild
+  primary_links: Hauptlinks
+  latest: NEU
+  new: NEU
+  terminal_latest: "[NEU]"
+  selected_works: Ausgewählte Arbeiten und Kanäle
+  elsewhere: Weitere Orte
+  personal_edition: Persönliche Ausgabe
+  terminal_links: "$ ls ./links/"
+  terminal_socials: "$ cat ./soziale-netzwerke"
+  terminal_footer: "$ tail -n 1 ./fußzeile"
+  newsprint_volume: "BAND {{ year }} · LINKS"
+  newsprint_links: "01 / Links"
+  newsprint_connect: "02 / Verbindung"
+  entries: EINTRÄGE

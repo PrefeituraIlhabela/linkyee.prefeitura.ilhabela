@@ -11,12 +11,12 @@ links:
       icon: "fa-solid fa-wifi"
       text: "Se connecter au WiFi<span class='link-button-text'>Ilhabela Connectée</span>"
       url: "http://neverssl.com"
-      alt: "Se connecter au WiFi"
+      alt: "Comment se connecter au WiFi"
       title: "WiFi - Ilhabela Connectée"
       target: "_blank"
   - link:
       icon: "fa-solid fa-cloud"
-      text: "Projet Ilhabela Connectée <span class='link-button-text'>WiFi pour tous</span>"
+      text: "Comment se connecter"
       url: "https://www.ilhabela.sp.gov.br/wifi#rede"
       alt: "Projet Ilhabela Connectée - WiFi pour tous"
       title: "Projet Ilhabela Connectée - WiFi pour tous"
@@ -45,7 +45,8 @@ socials:
   - social: { icon: "fa-solid fa-envelope", url: "mailto:protocolo@ilhabela.sp.gov.br", title: "E-mail : protocolo@ilhabela.sp.gov.br", alt: "protocolo@ilhabela.sp.gov.br", target: "_blank" }
 
 footer: Mairie municipale d'Ilhabela
-copyright: "© {{ year }} Propulsé par <a href='https://github.com/ZhgChgLi/linkyee' target='_blank'>linkyee</a>. Personnalisé pour la <a href='https://www.ilhabela.sp.gov.br' target='_blank'>mairie d'Ilhabela</a> par <a href='https://github.com/antoniowf' target='_blank'>AntonioWF</a> 🖤."
+copyright: >
+  © {{ year }} Powered by <a href="https://github.com/ZhgChgLi/linkyee" target="_blank">linkyee</a> Customized by <a href="https://github.com/antoniowf" target="_blank">AntonioWF</a>.
 
 ui:
   language_switcher: Langue

@@ -1,0 +1,67 @@
+lang: ar
+og_locale: ar_AR
+locale_label: العربية
+
+title: إيلهابيلا
+name: بلدية إيلهابيلا
+tagline: عاصمة الإبحار الوطنية في البرازيل
+
+links:
+  - link:
+      icon: "fa-solid fa-wifi"
+      text: "اتصل بشبكة WiFi<span class='link-button-text'>إيلهابيلا المتصلة</span>"
+      url: "http://neverssl.com"
+      alt: "كيفية الاتصال بشبكة WiFi"
+      title: "WiFi - إيلهابيلا المتصلة"
+      target: "_blank"
+  - link:
+      icon: "fa-solid fa-cloud"
+      text: "كيفية الاتصال"
+      url: "https://www.ilhabela.sp.gov.br/wifi#rede"
+      alt: "مشروع إيلهابيلا المتصلة - WiFi للجميع"
+      title: "مشروع إيلهابيلا المتصلة - WiFi للجميع"
+      target: "_blank"
+  - link:
+      icon: "fa-solid fa-globe"
+      text: "موقع بلدية إيلهابيلا"
+      url: "https://www.ilhabela.sp.gov.br"
+      alt: "موقع بلدية إيلهابيلا"
+      title: "موقع بلدية إيلهابيلا"
+      target: "_blank"
+  - link:
+      icon: "fa-solid fa-newspaper"
+      text: "{{ vars.RSSFeedPlugin['https://www.ilhabela.sp.gov.br/portal/rss'][0].title }}"
+      url: "{{ vars.RSSFeedPlugin['https://www.ilhabela.sp.gov.br/portal/rss'][0].url }}"
+      alt: "أخبار بلدية إيلهابيلا"
+      title: "خلاصة أخبار بلدية إيلهابيلا"
+      target: "_blank"
+      latest: true
+
+socials:
+  - social: { icon: "fa-brands fa-tiktok", url: "https://www.tiktok.com/@prefeituradeilhabela", title: "TikTok بلدية إيلهابيلا", alt: "TikTok بلدية إيلهابيلا", target: "_blank" }
+  - social: { icon: "fa-brands fa-facebook", url: "https://www.facebook.com/PrefeituraIlhabela", title: "Facebook بلدية إيلهابيلا", alt: "Facebook بلدية إيلهابيلا", target: "_blank" }
+  - social: { icon: "fa-brands fa-youtube", url: "https://www.youtube.com/@PrefeituradeIlhabelaOficial", title: "YouTube بلدية إيلهابيلا", alt: "YouTube بلدية إيلهابيلا", target: "_blank" }
+  - social: { icon: "fa-brands fa-instagram", url: "https://www.instagram.com/prefeituradeilhabelaoficial/", title: "Instagram بلدية إيلهابيلا", alt: "Instagram بلدية إيلهابيلا", target: "_blank" }
+  - social: { icon: "fa-solid fa-envelope", url: "mailto:protocolo@ilhabela.sp.gov.br", title: "البريد الإلكتروني: protocolo@ilhabela.sp.gov.br", alt: "protocolo@ilhabela.sp.gov.br", target: "_blank" }
+
+footer: بلدية إيلهابيلا
+copyright: >
+  © {{ year }} Powered by <a href="https://github.com/ZhgChgLi/linkyee" target="_blank">linkyee</a> Customized by <a href="https://github.com/antoniowf" target="_blank">AntonioWF</a>.
+
+ui:
+  language_switcher: اللغة
+  profile_picture: صورة الملف الشخصي
+  primary_links: الروابط الرئيسية
+  latest: الأحدث
+  new: جديد
+  terminal_latest: "[جديد]"
+  selected_works: أعمال وقنوات مختارة
+  elsewhere: أماكن أخرى
+  personal_edition: الإصدار الشخصي
+  terminal_links: "$ ls ./الروابط/"
+  terminal_socials: "$ cat ./الشبكات-الاجتماعية"
+  terminal_footer: "$ tail -n 1 ./التذييل"
+  newsprint_volume: "المجلد {{ year }} · الروابط"
+  newsprint_links: "01 / الروابط"
+  newsprint_connect: "02 / الاتصال"
+  entries: الإدخالات

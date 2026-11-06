@@ -44,8 +44,6 @@
   <main class="container">
     <section class="card profile-card">
       <img src="{{ avatar }}" alt="{{ ui.profile_picture | default: 'Profile Picture' }}" class="profile-pic" />
-      <h1 class="name">{{ name }}</h1>
-      <p class="description">{{ tagline }}</p>
     </section>
 
     <nav class="links" aria-label="{{ ui.primary_links | default: 'Primary links' }}">
@@ -74,6 +72,32 @@
       {{ footer }}
       <div class="copyright">{{ copyright }}</div>
     </footer>
+
+    {% if i18n_enabled %}
+      <details class="language-switcher">
+        <summary aria-label="{{ ui.language_switcher | default: 'Language' }}">🌐</summary>
+        <div class="language-options">
+          {% for option in language_options %}
+            <a href="../{{ option.code }}/"{% if option.code == locale %} aria-current="page"{% endif %}>
+              {% if option.code == "pt-br" %}🇧🇷
+              {% elsif option.code == "en" %}🇺🇸
+              {% elsif option.code == "de" %}🇩🇪
+              {% elsif option.code == "es" %}🇪🇸
+              {% elsif option.code == "fr" %}🇫🇷
+              {% elsif option.code == "zh-cn" %}🇨🇳
+              {% elsif option.code == "hi" %}🇮🇳
+              {% elsif option.code == "ar" %}🇸🇦
+              {% elsif option.code == "bn" %}🇧🇩
+              {% elsif option.code == "ru" %}🇷🇺
+              {% elsif option.code == "th" %}🇹🇭
+              {% elsif option.code == "zu" %}🇿🇦
+              {% endif %}
+              <span>{{ option.label }}</span>
+            </a>
+          {% endfor %}
+        </div>
+      </details>
+    {% endif %}
   </main>
 
   {% if google_analytics_id %}

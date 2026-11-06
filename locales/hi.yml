@@ -1,0 +1,67 @@
+lang: hi-IN
+og_locale: hi_IN
+locale_label: हिन्दी
+
+title: इल्हाबेला
+name: इल्हाबेला नगर पालिका
+tagline: ब्राज़ील की राष्ट्रीय नौकायन राजधानी
+
+links:
+  - link:
+      icon: "fa-solid fa-wifi"
+      text: "WiFi से कनेक्ट करें<span class='link-button-text'>इल्हाबेला कनेक्टेड</span>"
+      url: "http://neverssl.com"
+      alt: "WiFi से कनेक्ट करने का तरीका"
+      title: "WiFi - इल्हाबेला कनेक्टेड"
+      target: "_blank"
+  - link:
+      icon: "fa-solid fa-cloud"
+      text: "कनेक्ट करने का तरीका"
+      url: "https://www.ilhabela.sp.gov.br/wifi#rede"
+      alt: "इल्हाबेला कनेक्टेड परियोजना - सभी के लिए WiFi"
+      title: "इल्हाबेला कनेक्टेड परियोजना - सभी के लिए WiFi"
+      target: "_blank"
+  - link:
+      icon: "fa-solid fa-globe"
+      text: "इल्हाबेला नगर पालिका की वेबसाइट"
+      url: "https://www.ilhabela.sp.gov.br"
+      alt: "इल्हाबेला नगर पालिका की वेबसाइट"
+      title: "इल्हाबेला नगर पालिका की वेबसाइट"
+      target: "_blank"
+  - link:
+      icon: "fa-solid fa-newspaper"
+      text: "{{ vars.RSSFeedPlugin['https://www.ilhabela.sp.gov.br/portal/rss'][0].title }}"
+      url: "{{ vars.RSSFeedPlugin['https://www.ilhabela.sp.gov.br/portal/rss'][0].url }}"
+      alt: "इल्हाबेला नगर पालिका की खबरें"
+      title: "इल्हाबेला नगर पालिका RSS"
+      target: "_blank"
+      latest: true
+
+socials:
+  - social: { icon: "fa-brands fa-tiktok", url: "https://www.tiktok.com/@prefeituradeilhabela", title: "इल्हाबेला नगर पालिका TikTok", alt: "इल्हाबेला नगर पालिका TikTok", target: "_blank" }
+  - social: { icon: "fa-brands fa-facebook", url: "https://www.facebook.com/PrefeituraIlhabela", title: "इल्हाबेला नगर पालिका Facebook", alt: "इल्हाबेला नगर पालिका Facebook", target: "_blank" }
+  - social: { icon: "fa-brands fa-youtube", url: "https://www.youtube.com/@PrefeituradeIlhabelaOficial", title: "इल्हाबेला नगर पालिका YouTube", alt: "इल्हाबेला नगर पालिका YouTube", target: "_blank" }
+  - social: { icon: "fa-brands fa-instagram", url: "https://www.instagram.com/prefeituradeilhabelaoficial/", title: "इल्हाबेला नगर पालिका Instagram", alt: "इल्हाबेला नगर पालिका Instagram", target: "_blank" }
+  - social: { icon: "fa-solid fa-envelope", url: "mailto:protocolo@ilhabela.sp.gov.br", title: "ईमेल: protocolo@ilhabela.sp.gov.br", alt: "protocolo@ilhabela.sp.gov.br", target: "_blank" }
+
+footer: इल्हाबेला नगर पालिका
+copyright: >
+  © {{ year }} Powered by <a href="https://github.com/ZhgChgLi/linkyee" target="_blank">linkyee</a> Customized by <a href="https://github.com/antoniowf" target="_blank">AntonioWF</a>.
+
+ui:
+  language_switcher: भाषा
+  profile_picture: प्रोफ़ाइल चित्र
+  primary_links: मुख्य लिंक
+  latest: नवीनतम
+  new: नया
+  terminal_latest: "[नया]"
+  selected_works: चुनिंदा कार्य और चैनल
+  elsewhere: अन्य स्थान
+  personal_edition: व्यक्तिगत संस्करण
+  terminal_links: "$ ls ./लिंक/"
+  terminal_socials: "$ cat ./सोशल"
+  terminal_footer: "$ tail -n 1 ./फुटर"
+  newsprint_volume: "खंड {{ year }} · लिंक"
+  newsprint_links: "01 / लिंक"
+  newsprint_connect: "02 / कनेक्शन"
+  entries: प्रविष्टियाँ

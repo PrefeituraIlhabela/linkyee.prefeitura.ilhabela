@@ -1,0 +1,67 @@
+lang: ru
+og_locale: ru_RU
+locale_label: Русский
+
+title: Ильябела
+name: Мэрия Ильябелы
+tagline: Национальная столица парусного спорта Бразилии
+
+links:
+  - link:
+      icon: "fa-solid fa-wifi"
+      text: "Подключиться к WiFi<span class='link-button-text'>Ильябела онлайн</span>"
+      url: "http://neverssl.com"
+      alt: "Как подключиться к WiFi"
+      title: "WiFi — Ильябела онлайн"
+      target: "_blank"
+  - link:
+      icon: "fa-solid fa-cloud"
+      text: "Как подключиться"
+      url: "https://www.ilhabela.sp.gov.br/wifi#rede"
+      alt: "Проект «Ильябела онлайн» — WiFi для всех"
+      title: "Проект «Ильябела онлайн» — WiFi для всех"
+      target: "_blank"
+  - link:
+      icon: "fa-solid fa-globe"
+      text: "Сайт мэрии Ильябелы"
+      url: "https://www.ilhabela.sp.gov.br"
+      alt: "Сайт мэрии Ильябелы"
+      title: "Сайт мэрии Ильябелы"
+      target: "_blank"
+  - link:
+      icon: "fa-solid fa-newspaper"
+      text: "{{ vars.RSSFeedPlugin['https://www.ilhabela.sp.gov.br/portal/rss'][0].title }}"
+      url: "{{ vars.RSSFeedPlugin['https://www.ilhabela.sp.gov.br/portal/rss'][0].url }}"
+      alt: "Новости мэрии Ильябелы"
+      title: "RSS мэрии Ильябелы"
+      target: "_blank"
+      latest: true
+
+socials:
+  - social: { icon: "fa-brands fa-tiktok", url: "https://www.tiktok.com/@prefeituradeilhabela", title: "TikTok мэрии Ильябелы", alt: "TikTok мэрии Ильябелы", target: "_blank" }
+  - social: { icon: "fa-brands fa-facebook", url: "https://www.facebook.com/PrefeituraIlhabela", title: "Facebook мэрии Ильябелы", alt: "Facebook мэрии Ильябелы", target: "_blank" }
+  - social: { icon: "fa-brands fa-youtube", url: "https://www.youtube.com/@PrefeituradeIlhabelaOficial", title: "YouTube мэрии Ильябелы", alt: "YouTube мэрии Ильябелы", target: "_blank" }
+  - social: { icon: "fa-brands fa-instagram", url: "https://www.instagram.com/prefeituradeilhabelaoficial/", title: "Instagram мэрии Ильябелы", alt: "Instagram мэрии Ильябелы", target: "_blank" }
+  - social: { icon: "fa-solid fa-envelope", url: "mailto:protocolo@ilhabela.sp.gov.br", title: "Электронная почта: protocolo@ilhabela.sp.gov.br", alt: "protocolo@ilhabela.sp.gov.br", target: "_blank" }
+
+footer: Мэрия Ильябелы
+copyright: >
+  © {{ year }} Powered by <a href="https://github.com/ZhgChgLi/linkyee" target="_blank">linkyee</a> Customized by <a href="https://github.com/antoniowf" target="_blank">AntonioWF</a>.
+
+ui:
+  language_switcher: Язык
+  profile_picture: Фото профиля
+  primary_links: Основные ссылки
+  latest: НОВОЕ
+  new: НОВОЕ
+  terminal_latest: "[НОВОЕ]"
+  selected_works: Избранные работы и каналы
+  elsewhere: Другие площадки
+  personal_edition: Персональная версия
+  terminal_links: "$ ls ./ссылки/"
+  terminal_socials: "$ cat ./социальные-сети"
+  terminal_footer: "$ tail -n 1 ./подвал"
+  newsprint_volume: "ТОМ {{ year }} · ССЫЛКИ"
+  newsprint_links: "01 / Ссылки"
+  newsprint_connect: "02 / Подключение"
+  entries: ЗАПИСИ

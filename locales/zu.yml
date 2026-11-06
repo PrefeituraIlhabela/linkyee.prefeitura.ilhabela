@@ -1,0 +1,67 @@
+lang: zu
+og_locale: zu_ZA
+locale_label: IsiZulu
+
+title: Ilhabela
+name: UMasipala wase-Ilhabela
+tagline: Inhloko-dolobha kazwelonke yokuhamba ngomkhumbi e-Brazil
+
+links:
+  - link:
+      icon: "fa-solid fa-wifi"
+      text: "Indlela yokuxhuma<span class='link-button-text'>Ilhabela Ixhumekile</span>"
+      url: "http://neverssl.com"
+      alt: "Indlela yokuxhuma ku-WiFi"
+      title: "WiFi - Ilhabela Ixhumekile"
+      target: "_blank"
+  - link:
+      icon: "fa-solid fa-cloud"
+      text: "Iphrojekthi ye-Ilhabela Ixhumekile<span class='link-button-text'>i-WiFi yabo bonke</span>"
+      url: "https://www.ilhabela.sp.gov.br/wifi#rede"
+      alt: "Iphrojekthi ye-Ilhabela Ixhumekile - i-WiFi yabo bonke"
+      title: "Iphrojekthi ye-Ilhabela Ixhumekile - i-WiFi yabo bonke"
+      target: "_blank"
+  - link:
+      icon: "fa-solid fa-globe"
+      text: "Iwebhusayithi kaMasipala wase-Ilhabela"
+      url: "https://www.ilhabela.sp.gov.br"
+      alt: "Iwebhusayithi kaMasipala wase-Ilhabela"
+      title: "Iwebhusayithi kaMasipala wase-Ilhabela"
+      target: "_blank"
+  - link:
+      icon: "fa-solid fa-newspaper"
+      text: "{{ vars.RSSFeedPlugin['https://www.ilhabela.sp.gov.br/portal/rss'][0].title }}"
+      url: "{{ vars.RSSFeedPlugin['https://www.ilhabela.sp.gov.br/portal/rss'][0].url }}"
+      alt: "Izindaba zikaMasipala wase-Ilhabela"
+      title: "RSS kaMasipala wase-Ilhabela"
+      target: "_blank"
+      latest: true
+
+socials:
+  - social: { icon: "fa-brands fa-tiktok", url: "https://www.tiktok.com/@prefeituradeilhabela", title: "TikTok kaMasipala wase-Ilhabela", alt: "TikTok kaMasipala wase-Ilhabela", target: "_blank" }
+  - social: { icon: "fa-brands fa-facebook", url: "https://www.facebook.com/PrefeituraIlhabela", title: "Facebook kaMasipala wase-Ilhabela", alt: "Facebook kaMasipala wase-Ilhabela", target: "_blank" }
+  - social: { icon: "fa-brands fa-youtube", url: "https://www.youtube.com/@PrefeituradeIlhabelaOficial", title: "YouTube kaMasipala wase-Ilhabela", alt: "YouTube kaMasipala wase-Ilhabela", target: "_blank" }
+  - social: { icon: "fa-brands fa-instagram", url: "https://www.instagram.com/prefeituradeilhabelaoficial/", title: "Instagram kaMasipala wase-Ilhabela", alt: "Instagram kaMasipala wase-Ilhabela", target: "_blank" }
+  - social: { icon: "fa-solid fa-envelope", url: "mailto:protocolo@ilhabela.sp.gov.br", title: "I-imeyili: protocolo@ilhabela.sp.gov.br", alt: "protocolo@ilhabela.sp.gov.br", target: "_blank" }
+
+footer: UMasipala wase-Ilhabela
+copyright: >
+  © {{ year }} Powered by <a href="https://github.com/ZhgChgLi/linkyee" target="_blank">linkyee</a> Customized by <a href="https://github.com/antoniowf" target="_blank">AntonioWF</a>.
+
+ui:
+  language_switcher: Ulimi
+  profile_picture: Isithombe sephrofayela
+  primary_links: Izixhumanisi eziyinhloko
+  latest: OKUSHA
+  new: OKUSHA
+  terminal_latest: "[OKUSHA]"
+  selected_works: Imisebenzi neziteshi ezikhethiwe
+  elsewhere: Kwezinye izindawo
+  personal_edition: Uhlelo lomuntu siqu
+  terminal_links: "$ ls ./izixhumanisi/"
+  terminal_socials: "$ cat ./ezokuxhumana"
+  terminal_footer: "$ tail -n 1 ./unyaweni"
+  newsprint_volume: "UMQULU {{ year }} · IZIXHUMANISI"
+  newsprint_links: "01 / Izixhumanisi"
+  newsprint_connect: "02 / Ukuxhuma"
+  entries: IZINTO
