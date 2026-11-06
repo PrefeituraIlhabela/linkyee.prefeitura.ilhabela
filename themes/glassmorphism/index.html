@@ -43,7 +43,8 @@
 
   <main class="container">
     <section class="card profile-card">
-      <img src="{{ avatar }}" alt="{{ ui.profile_picture | default: 'Profile Picture' }}" class="profile-pic" />
+      <img src="{{ avatar }}" alt="{{ ui.profile_picture | default: 'Profile Picture' }}" class="profile-pic profile-pic-light" />
+      <img src="./images/profile-dark.png" alt="{{ ui.profile_picture | default: 'Profile Picture' }}" class="profile-pic profile-pic-dark" />
     </section>
 
     <nav class="links" aria-label="{{ ui.primary_links | default: 'Primary links' }}">

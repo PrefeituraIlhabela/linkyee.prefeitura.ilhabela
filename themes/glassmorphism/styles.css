@@ -137,6 +137,16 @@ a { color: inherit; text-decoration: none; }
   box-shadow: 0 0px 0px rgba(12, 91, 77, 0.22);
 }
 
+.profile-pic-dark { display: none; }
+
+@media (prefers-color-scheme: dark) {
+  :root:not(.scheme-light) .profile-pic-light { display: none; }
+  :root:not(.scheme-light) .profile-pic-dark { display: block; }
+}
+
+:root.scheme-dark .profile-pic-light { display: none; }
+:root.scheme-dark .profile-pic-dark { display: block; }
+
 .name {
   margin-bottom: 8px;
   font-family: var(--display);
