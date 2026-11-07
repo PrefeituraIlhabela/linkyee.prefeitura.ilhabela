@@ -46,7 +46,7 @@ socials:
 
 footer: Ayuntamiento Municipal de Ilhabela
 copyright: >
-  © 2026 Powered by linkyee developed by AntonioWF.
+  © {{ year }} Developed by <a href="https://www.linkedin.com/in/antonio-wenceslau/" target="_blank">AntonioWF</a>.
 
 ui:
   language_switcher: Idioma
